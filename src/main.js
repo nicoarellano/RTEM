@@ -413,7 +413,6 @@ async function loadGraph1(geojson, viewer, data, i) {
   promise.then(function (dataSource) {
     viewer.dataSources.add(dataSource);
     const entities = dataSource.entities.values;
-    viewer.zoomTo(entities);
     entities.forEach((entity) => {
       var perc = ((data[i] - min) * 100) / (max - min);
       var color = perc2color(perc);
