@@ -1,0 +1,79 @@
+[
+ {
+   "building_id": 149,
+   "annual_mean_temp": 68,
+   "equip_count": 3,
+   "point_count": 37,
+   "sq_ft": 31152
+ },
+ {
+   "building_id": 154,
+   "annual_mean_temp": 146,
+   "equip_count": 8,
+   "point_count": 26,
+   "sq_ft": 357297
+ },
+ {
+   "building_id": 163,
+   "annual_mean_temp": 67,
+   "equip_count": 3,
+   "point_count": 31,
+   "sq_ft": 20000
+ },
+ {
+   "building_id": 171,
+   "annual_mean_temp": 71,
+   "equip_count": 3,
+   "point_count": 32,
+   "sq_ft": 23400
+ },
+ {
+   "building_id": 184,
+   "annual_mean_temp": 75,
+   "equip_count": 3,
+   "point_count": 34,
+   "sq_ft": 52782
+ },
+ {
+   "building_id": 197,
+   "annual_mean_temp": 79,
+   "equip_count": 2,
+   "point_count": 38,
+   "sq_ft": 75165
+ },
+ {
+   "building_id": 214,
+   "annual_mean_temp": 72,
+   "equip_count": 4,
+   "point_count": 72,
+   "sq_ft": 12000
+ },
+ {
+   "building_id": 278,
+   "annual_mean_temp": 71,
+   "equip_count": 5,
+   "point_count": 38,
+   "sq_ft": 31220
+ },
+ {
+   "building_id": 317,
+   "annual_mean_temp": 76,
+   "equip_count": 2,
+   "point_count": 38,
+   "sq_ft": 35000
+ },
+ {
+   "building_id": 326,
+   "annual_mean_temp": 69,
+   "equip_count": 3,
+   "point_count": 31,
+   "sq_ft": 11500
+ },
+ {
+   "building_id": 445,
+   "annual_mean_temp": 78,
+   "equip_count": 2,
+   "point_count": 36,
+   "sq_ft": 33220
+ }
+]
