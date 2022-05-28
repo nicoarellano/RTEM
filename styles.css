@@ -30,6 +30,14 @@ body {
   padding: 15px;
 }
 
+.menu:hover {
+  background-color: rgba(251, 184, 41, 0.8);
+}
+
+.menu:active {
+  background-color: rgba(251, 184, 41);
+}
+
 .footer {
   position: absolute;
   background-color: rgba(251, 184, 41);
