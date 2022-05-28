@@ -76,6 +76,15 @@ function initCesium() {
       });
   });
 
+// Toggle Menu
+const menu = document.getElementById("menu");
+const menuButton = document.getElementById("menu-button");
+var toggleMenu = false;
+menuButton.onclick = function () {
+  menu.style.display = toggleMenu? "block" : "none";
+  toggleMenu = !toggleMenu
+}
+
   // Show Map Labels
   var baseLayerPickerViewModel = viewer.baseLayerPicker.viewModel;
   baseLayerPickerViewModel.selectedImagery =
