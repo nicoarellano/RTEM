@@ -9,31 +9,10 @@ body {
   overflow: hidden;
 }
 
-#file-input {
-  z-index: 1;
-  position: absolute;
-  border: none;
-}
-
-
-.loadingIndicator {
-  display: block;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -33px;
-  margin-left: -33px;
-  width: 66px;
-  height: 66px;
-  background-position: center;
-  background-repeat: no-repeat;
-  /* background-image: url(Images/ajax-loader.gif); */
-}
-
 .header {
   color: white;
   background-color: black;
-  font-size: 43px;
+  font-size: 42px;
   text-align: center;
   height: 55px;
   border-bottom: 3px solid rgba(251, 184, 41)
@@ -51,17 +30,38 @@ body {
   padding: 15px;
 }
 
-.speckle-viewer {
+.footer {
+  position: absolute;
+  background-color: rgba(251, 184, 41);
+  display: none;
+  padding: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  bottom: 0px;
+  text-align: center;
+  left: 40%;
+}
+
+.graphs-viewer {
+  z-index: 100;
+  overflow: auto;
+  max-height: 100vh;
   list-style-type: none;
   position: absolute;
-  right: 10px;
+  right: 0px;
   top: 60px;
   background-color: rgba(251, 184, 41, 0.6);
-  border-radius: 5px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   margin: 5px;
   padding: 10px;
-  min-width: 1020;
-  min-height: 720;
+  max-width: 30%;
+  min-height: 80%;
+}
+
+img {
+  max-width: 100%;
+  margin: 15px;
 }
 
 .checkbox {
@@ -69,14 +69,6 @@ body {
   filter: invert(100%);
   height: 20px;
   right: 15px;
-}
-
-.button {
-  width: 35px;
-  height: 22px;
-  position: absolute;
-  left: 222px;
-  border: none;
 }
 
 .box {
@@ -100,17 +92,32 @@ body {
   padding: 10px;
   font-size: 16px;
   border: none;
+  border-radius: 10px;
+  margin: 5px;
+}
+.dropdown:hover {
+  background-color: rgb(20, 20, 20);
 }
 
-.footer {
-  background-color: rgba(251, 184, 41);
-  display: none;
-  position: absolute;
+.button {
+  background-color: black;
+  width: 200px;
+  height: 40px;
+  color: rgba(251, 184, 41, 0.6);;
   padding: 10px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  bottom: 0px;
-  left: 40%;
+  text-align: center;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.button:hover {
+  background-color: rgb(20, 20, 20);
+}
+.button:active{
+  background-color:rgb(40, 40, 40)
 }
 
 .fullWindow {

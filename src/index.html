@@ -1,110 +1,55 @@
 <!DOCTYPE html>
 
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="NY | 3d Map data viewer" />
-    <title> NYC | Digital Twin App</title>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗽</text></svg>">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
 
-  <body style="font-family: sans-serif"> 
-    <div>
-      <header class="header" style="color:rgba(251, 184, 41)">
-        <a id="title" ></a>🗽 New York  | 3d Map data viewer<a id="title-dest"></a>
-      </header>
-    </div>
-    <div id="cesiumContainer"></div> 
-    <!-- <script src="../node_modules/cesium/Build/Cesium/Cesium.js"></script> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.93.0/Cesium.js" integrity="sha512-ZeH8MWL4o0SAhe5r9XgR4dp+0dP3o7l/JrwSUjN3uF03fzZYTdDir7ScF3fS70Y82JCBYxl3tuNHodxjWQEcTw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NYC | 3d Map data viewer" />
+  <title>NYC | 3d Map data viewer</title>
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🗽</text></svg>" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
 
-    
+<body style="font-family: sans-serif">
+  <div>
+    <header class="header" style="color: rgba(251, 184, 41)">
+      <a id="title"></a>🗽 New York | 3d Map data viewer<a id="title-dest"></a>
+    </header>
   </div>
-    <script src="./main.js" type="module"></script>
-    <!-- GUI --> <div>  
-      <ul class="menu"><h3 id="menu-button">☰ Menu</h3>         
-        <div id = "menu" style="display: none;">
-        <div id="selector">
-          <li>🗺️ Map view:<input
-            class="checkbox"
-            type="checkbox"
-            id="map-view"
-        /></li>
-        <li>🏭 Load OSM Buildings:<input
-          class="checkbox"
-          type="checkbox"
-          id="load-osm"
-          /></li>
-        <li>
-          <li><strong>Counties</strong>
-            <div>
-              <select
-                id="counties-menu"
-                class="dropdown"
-                value=""
-                onchange="getSelected(county, objMenu);"
-              >
-                <option class="option" value=""> -- select a County-- </option>
-              </select>
-            </div>
-        </div>
-        <div id="obj-menu" style="display: none;"> <strong>Objects </strong>
-            &#127794 Load Trees<input
-              class="checkbox"
-              type="checkbox"
-              id="load-trees"
-            /> 
-          </li>
-          <li>
-            &#127968 Load Buldings (GLB):<input
-              class="checkbox"
-              type="checkbox"
-              id="load-bldg-glb"
-            />
-          </li>
-          <li>
-            &#127981 Load Buildings (IFC):<input
-              class="checkbox"
-              type="checkbox"
-              id="load-bldg-ifc"
-            />
-          </li>
-          <li>
-            &#128998 Open Speckle:<input
-              class="checkbox"
-              type="checkbox"
-              id="load-bldg-speckle"
-            />
-          </li>
-      </ul>
-      <div class="speckle-viewer" id="speckle-viewer" style="display: none;"></div>
+  <div id="cesiumContainer"></div>
+  <!-- <script src="../node_modules/cesium/Build/Cesium/Cesium.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/stats.js/r16/Stats.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.93.0/Cesium.js"
+    integrity="sha512-ZeH8MWL4o0SAhe5r9XgR4dp+0dP3o7l/JrwSUjN3uF03fzZYTdDir7ScF3fS70Y82JCBYxl3tuNHodxjWQEcTw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="./main.js" type="module"></script>
+  <!-- GUI -->
+  <side class="menu">
+    <h3 id="menu-button">☰ Menu</h3>
+    <div id="menu" style="display: block">
+      <select id="counties-menu" class="dropdown" value="" onchange="getSelected(county, objMenu);">
+        <option class="option" value="">-- select a County--</option>
+      </select>
+      <div class="button" id="map-view">🗺️ Map view</div>
+      <div class="button" id="go-to">🏢 Go to Buildings</div>
+      <div class="button" id="show-graphs">📈 Show Graphs</div>
     </div>
-    
-    <script>
-      var menuButton = document.getElementById('menu-button');
-      var menu = document.getElementById('menu');
-      var toggleMenu = true;
-      menuButton.addEventListener("click", function () {
-        toggleMenu = !toggleMenu;
-        menu.style.display = toggleMenu?'block':'none';
-      })
-      
-      var county = document.getElementById('county-menu');
-      var objMenu = document.getElementById('obj-menu');
-      var mapStyle = document.getElementById('map-style');
-      var toggleMapStyle = false;
-      
-      var loadIFC = document.getElementById('load-bldg-ifc')
-      loadIFC.addEventListener("click", function () {
-        console.log("ifc")
-      })
+  </side>
 
-    </script>
-    <footer class="footer" id="footer"><a id="coordinates"></a></footer>
-  </body>
+  <div class="button" id="show-graphs">
+  <div class="graphs-viewer" id="graphs-viewer" style="display: none">
+    <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/bronx_2020_multifamily.png?raw=true" alt="g1">
+    <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/equipment_counts_per_county.png?raw=true" alt="g2">
+    <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/kings_2020_multifamily.png?raw=true" alt="g3">
+    <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true" alt="g4">
+    <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/queens_2020_multifamily.png?raw=true" alt="g5">
+  </div>
+  </div>
+
+  <footer class="footer" id="footer"><a id="coordinates"></a></footer>
+</body>
+
 </html>
