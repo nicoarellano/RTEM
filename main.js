@@ -120,6 +120,8 @@ function initCesium() {
       flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
     }
     toggleGoTo = !toggleGoTo;
+
+    document.getElementById("footer").style.display = toggleGoTo? "none" : "block";
   };
 
   const showGraphs = document.getElementById("show-graphs");
