@@ -43,6 +43,7 @@ body {
 .footer {
   /* display: none; */
   position: absolute;
+  margin: 0 auto;
   align-items: center;
   background-color: rgba(251, 184, 41);
   color: black;
@@ -51,8 +52,8 @@ body {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   bottom: 0px;  
-  width: 33vw;
-  left: 33vw;
+  width: 50vw;
+  left: 15vw;
 }
 
 .footer:hover {
@@ -68,8 +69,9 @@ body {
 .slider {
   -webkit-appearance: none;  /* Override default CSS styles */
   margin: 0 auto;
+  text-align:justify;
   appearance: none;
-  width: 75%; /* Full-width */
+  width: 100%; /* Full-width */
   height: 20px; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
@@ -111,6 +113,15 @@ body {
 
 .graphs-viewer:hover {
   background-color: rgba(251, 184, 41, 0.8);
+}
+
+span {
+  /* width: 100em; */
+  /* text-align:center; */
+  position: relative;
+  left: 5px;
+  font-size: 1.06vw;
+  
 }
 
 img {
