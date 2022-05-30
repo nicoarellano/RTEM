@@ -76,14 +76,14 @@ function initCesium() {
       });
   });
 
-// Toggle Menu
-const menu = document.getElementById("menu");
-const menuButton = document.getElementById("menu-button");
-var toggleMenu = false;
-menuButton.onclick = function () {
-  menu.style.display = toggleMenu? "block" : "none";
-  toggleMenu = !toggleMenu
-}
+  // Toggle Menu
+  const menu = document.getElementById("menu");
+  const menuButton = document.getElementById("menu-button");
+  var toggleMenu = false;
+  menuButton.onclick = function () {
+    menu.style.display = toggleMenu ? "block" : "none";
+    toggleMenu = !toggleMenu;
+  };
 
   // Show Map Labels
   var baseLayerPickerViewModel = viewer.baseLayerPicker.viewModel;
@@ -111,7 +111,7 @@ menuButton.onclick = function () {
   var toggleGoTo = true;
   goTo.onclick = function () {
     if (toggleGoTo) {
-      this.textContent = "🌎 Go to Counties";
+      this.textContent = "🌎 Go to State";
       // Fly To Buildings
       flyTo(viewer, -73.97, 40.7435, 500, -45.0, 0);
     } else {
@@ -123,7 +123,7 @@ menuButton.onclick = function () {
   };
 
   const showGraphs = document.getElementById("show-graphs");
-  const graphsViewer  = document.getElementById("graphs-viewer");
+  const graphsViewer = document.getElementById("graphs-viewer");
   var toggleGraphs = true;
   showGraphs.onclick = function () {
     if (toggleGraphs) {
@@ -148,25 +148,27 @@ menuButton.onclick = function () {
 
   // Load OSM
   let loadOSM = document.getElementById("load-osm");
-  var cdcBldgs =
-    // Carleton
-    "${elementId} === 671842709 ||" +
-    "${elementId} ===	130338056 ||" +
-    "${elementId} === 130329216";
-  buildingTileset.style = new Cesium.Cesium3DTileStyle({
-    color: {
-      conditions: [
-        [
-          "${name} === 'Bombardier'||" + "${name} === 'East Block'",
-          'color("yellow")',
+  var bldgs =
+    "${elementId} === 144257168 ||" +
+    "${elementId} ===		265517920 ||" +
+    "${elementId} ===		265516427 ||" +    
+    "${elementId} === 	265517913";
+  var range = document.getElementById("myRange");
+
+  range.addEventListener("input", function () {
+    var hexColor = perc2color(this.value/0.24);
+    console.log(this.value);
+    buildingTileset.style = new Cesium.Cesium3DTileStyle({
+      color: {
+        conditions: [
+          [bldgs, "color('" + hexColor +"')"], 
+          // ["true", 'color("white", 1)'], // All remaining buildings
         ],
-        [cdcBldgs, 'color("white", 0.05)'],
-        ["true", 'color("white", 1)'], // All remaining buildings
-      ],
-    },
-    show: {
-      conditions: [["${elementId} === 949254697", false]],
-    },
+      },
+      show: {
+        conditions: [["${elementId} === 949254697", false]],
+      },
+    });
   });
 }
 

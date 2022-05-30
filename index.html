@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./styles.css" />
 </head>
 
-<body style="font-family: sans-serif">
+<body>
   <div>
     <header class="header" style="color: rgba(251, 184, 41)">
       <a id="title"></a>🗽 New York | 3d Map data viewer<a id="title-dest"></a>
@@ -25,12 +25,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cesium/1.93.0/Cesium.js"
     integrity="sha512-ZeH8MWL4o0SAhe5r9XgR4dp+0dP3o7l/JrwSUjN3uF03fzZYTdDir7ScF3fS70Y82JCBYxl3tuNHodxjWQEcTw=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.0/dist/chart.min.js"></script>
   <script src="./main.js" type="module"></script>
   <!-- GUI -->
   <side class="menu">
     <h3 id="menu-button">☰ Menu</h3>
     <div id="menu" style="display: none">
-      <select id="counties-menu" class="dropdown" value="" onchange="getSelected(county, objMenu);">
+      <select id="counties-menu" class="dropdown" value="">
         <option class="option" value="">-- select a County--</option>
       </select>
       <div class="button" id="map-view">🗺️ Map view</div>
@@ -39,17 +40,29 @@
     </div>
   </side>
 
-  <div class="button" id="show-graphs">
+  <div id="show-graphs">
   <div class="graphs-viewer" id="graphs-viewer" style="display: none">
+    <h1>Graphs</h1><br>
+   <h3>Graph 1</h3>
     <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/bronx_2020_multifamily.png?raw=true" alt="g1">
+    <h3>Graph 2</h3>
     <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/equipment_counts_per_county.png?raw=true" alt="g2">
+    <h3>Graph 3</h3>
     <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/kings_2020_multifamily.png?raw=true" alt="g3">
+    <h3>Graph 4</h3>
     <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true" alt="g4">
+    <h3>Graph 5</h3>
     <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/queens_2020_multifamily.png?raw=true" alt="g5">
   </div>
   </div>
 
-  <footer class="footer" id="footer"><a id="coordinates"></a></footer>
+  <footer class="footer" id="footer">
+    <div class="slidecontainer">
+      
+      <input type="range" min="1" max="24" value="12" class="slider" id="myRange">
+      <div style="font-size: 84%;"> 01 | 02 | 03 | 04 | 05 | 06 | 07 | 08 | 09 |  10 |  11 | <strong>12</strong> | 13 | 14 | 15 | 16 | 17 | 18 | 19 | 20 | 21 | 22 | 23 | 24</div>
+    </div>
+    <!-- <a id="coordinates"></a></footer> -->
 </body>
 
 </html>
