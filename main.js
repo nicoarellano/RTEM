@@ -44,7 +44,6 @@ function initCesium() {
     counties.forEach((county) => {
       const countyName = county.properties.name;
       loadGraph1(county, viewer, data, i);
-      // loadGeojson(county, viewer, 1500);
       countiesNames.push(countyName);
       var option = document.createElement("option");
       option.innerHTML = countyName;
@@ -199,16 +198,16 @@ async function loadGraph1(geojson, viewer, data, i) {
 
 async function loadGeojson(geojson, viewer, h) {
   const fillPromise = Cesium.GeoJsonDataSource.load(geojson, {
-    fill: Cesium.Color.fromBytes(251, 184, 41, 0),
+    fill: Cesium.Color.fromBytes(251, 184, 41, 50),
     stroke: Cesium.Color.fromBytes(251, 184, 41, 255),
-    // clampToGround: true,
+    clampToGround: true,
   });
   fillPromise.then(function (dataSource) {
     viewer.dataSources.add(dataSource);
     const entities = dataSource.entities.values;
     viewer.zoomTo(entities);
     entities.forEach((entity) => {
-      entity.polygon.height = h;
+      // entity.polygon.height = h;
       entity.polygon.outlineWidth = 4;
       // entity.polygon.extrudedHeight = h;
     });
@@ -258,59 +257,6 @@ function getTree(collection, lng, lat, h, objId, specie) {
         0
       ),
       slices: 5,
-    },
-  });
-}
-
-function getDot(
-  collection,
-  lng,
-  lat,
-  dotName,
-  color = "#ff0000",
-  h = 1,
-  pix = 10
-) {
-  collection.entities.add({
-    name: dotName,
-    position: Cesium.Cartesian3.fromDegrees(lng, lat, h),
-    point: {
-      pixelSize: pix,
-      color: Cesium.Color.fromCssColorString(color),
-      outlineColor: Cesium.Color.WHITE,
-      outlineWidth: 2,
-      // heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-    },
-  });
-}
-
-function addImage(path, viewer, lng, lat, height = 0) {
-  viewer.entities.add({
-    position: Cesium.Cartesian3.fromDegrees(lng, lat, height),
-    billboard: {
-      image: path,
-      heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-    },
-  });
-}
-
-function loadGLB(url, dataSource, lng, lat, h = 0, angle = 0) {
-  var position = Cesium.Cartesian3.fromDegrees(lng, lat, h);
-  var heading = Cesium.Math.toRadians(angle);
-  var pitch = 0;
-  var roll = 0;
-  var hpr = new Cesium.HeadingPitchRoll(heading, pitch, roll);
-  var orientation = Cesium.Transforms.headingPitchRollQuaternion(position, hpr);
-
-  // const position = Cesium.Cartesian3.fromDegrees(lng, lat, height);
-  dataSource.entities.add({
-    name: url,
-    position: position,
-    material: "red",
-    orientation: orientation,
-    heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-    model: {
-      uri: url,
     },
   });
 }

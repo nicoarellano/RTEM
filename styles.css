@@ -49,8 +49,8 @@ body {
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
   bottom: 0px;  
-  width: 33%;
-  left: 33%;
+  width: 33vw;
+  left: 33vw;
 }
 
 .footer:hover {
