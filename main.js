@@ -112,9 +112,9 @@ function initCesium() {
     if (toggleGoTo) {
       this.textContent = "🌎 Go to State";
       // Fly To Buildings
-      flyTo(viewer, -73.97, 40.7435, 500, -45.0, 0);
+      flyTo(viewer, -73.99452, 		40.75641, 350, -45.0, 0);
     } else {
-      this.textContent = "🏢 Go to Buildings";
+      this.textContent = "🏢 Go to Building";
       // Fly to Counties
       flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
     }
@@ -150,9 +150,7 @@ function initCesium() {
   // Load OSM
   let loadOSM = document.getElementById("load-osm");
   var bldgs =
-    "${elementId} === 144257168 ||" +
-    "${elementId} ===		265517920 ||" +
-    "${elementId} ===		265516427 ||" +    
+  "${elementId} === 3573251 ||" +  
     "${elementId} === 	265517913";
   var range = document.getElementById("myRange");
 

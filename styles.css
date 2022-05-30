@@ -45,6 +45,8 @@ body {
   position: absolute;
   margin: 0 auto;
   align-items: center;
+  text-justify: auto;
+  text-align:justify;
   background-color: rgba(251, 184, 41);
   opacity: 0.5;
   padding: 10px;
@@ -60,8 +62,14 @@ body {
   opacity: 1;
 }
 
+span {
+  width:100%;
+  font-size: 1.045vw;
+}
+
 .slidecontainer {
   width: 133%; /* Width of the outside container */
+  margin: 0 auto;
 }
 
 /* The slider itself */
@@ -112,15 +120,6 @@ body {
 
 .graphs-viewer:hover {
   background-color: rgba(251, 184, 41, 0.8);
-}
-
-span {
-  /* width: 100em; */
-  /* text-align:center; */
-  position: relative;
-  left: 5px;
-  font-size: 1.06vw;
-  
 }
 
 img {
