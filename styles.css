@@ -69,7 +69,7 @@ body {
   -webkit-appearance: none;  /* Override default CSS styles */
   margin: 0 auto;
   appearance: none;
-  width: 100%; /* Full-width */
+  width: 75%; /* Full-width */
   height: 20px; /* Specified height */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
@@ -124,18 +124,6 @@ img {
   filter: invert(100%);
   height: 20px;
   right: 15px;
-}
-
-.box {
-  height: 40px;
-  width: 40px;
-  margin-bottom: 15px;
-  position: absolute;
-  border: 1px solid black;
-}
-
-.slider {
-  width: 75%;
 }
 
 /* Dropdown Button */
@@ -526,8 +514,8 @@ img {
 }
 .cesium-widget,
 .cesium-widget canvas {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   touch-action: none;
 }
 .cesium-widget-credits {
