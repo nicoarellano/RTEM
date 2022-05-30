@@ -45,6 +45,7 @@ body {
   position: absolute;
   align-items: center;
   background-color: rgba(251, 184, 41);
+  color: black;
   opacity: 0.5;
   padding: 10px;
   border-top-left-radius: 15px;
