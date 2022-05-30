@@ -8,11 +8,11 @@ html,
 body {
   overflow: hidden;
   font-family: sans-serif;
+  color: rgba(251, 184, 41);
+  background-color: black;
 }
 
 .header {
-  color: white;
-  background-color: black;
   font-size: 42px;
   text-align: center;
   height: 55px;
@@ -20,6 +20,7 @@ body {
 }
 
 .menu {
+  color: black;
   list-style-type: none;
   position: absolute;
   top: 50px;
