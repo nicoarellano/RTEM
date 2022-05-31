@@ -1,6 +1,5 @@
 [
  {
-   "FIELD1": 0,
    "county_number": 0,
    "equip_count": 52,
    "sq_ft": 716057,
@@ -34,7 +33,6 @@
    "county": "albany"
  },
  {
-   "FIELD1": 1,
    "county_number": 1,
    "equip_count": 0,
    "sq_ft": 0,
@@ -68,7 +66,6 @@
    "county": "allegany"
  },
  {
-   "FIELD1": 2,
    "county_number": 2,
    "equip_count": 164,
    "sq_ft": 5808020,
@@ -102,7 +99,6 @@
    "county": "bronx"
  },
  {
-   "FIELD1": 3,
    "county_number": 3,
    "equip_count": 14,
    "sq_ft": 396114,
@@ -136,7 +132,6 @@
    "county": "broome"
  },
  {
-   "FIELD1": 4,
    "county_number": 4,
    "equip_count": 0,
    "sq_ft": 0,
@@ -170,7 +165,6 @@
    "county": "cattaraugus"
  },
  {
-   "FIELD1": 5,
    "county_number": 5,
    "equip_count": 0,
    "sq_ft": 0,
@@ -204,7 +198,6 @@
    "county": "cayuga"
  },
  {
-   "FIELD1": 6,
    "county_number": 6,
    "equip_count": 0,
    "sq_ft": 0,
@@ -238,7 +231,6 @@
    "county": "chautauqua"
  },
  {
-   "FIELD1": 7,
    "county_number": 7,
    "equip_count": 20,
    "sq_ft": 254057,
@@ -272,7 +264,6 @@
    "county": "chemung"
  },
  {
-   "FIELD1": 8,
    "county_number": 8,
    "equip_count": 0,
    "sq_ft": 0,
@@ -306,7 +297,6 @@
    "county": "chenango"
  },
  {
-   "FIELD1": 9,
    "county_number": 9,
    "equip_count": 0,
    "sq_ft": 0,
@@ -340,7 +330,6 @@
    "county": "clinton"
  },
  {
-   "FIELD1": 10,
    "county_number": 10,
    "equip_count": 383,
    "sq_ft": 945457,
@@ -374,7 +363,6 @@
    "county": "columbia"
  },
  {
-   "FIELD1": 11,
    "county_number": 11,
    "equip_count": 0,
    "sq_ft": 0,
@@ -408,7 +396,6 @@
    "county": "cortland"
  },
  {
-   "FIELD1": 12,
    "county_number": 12,
    "equip_count": 12,
    "sq_ft": 56000,
@@ -442,7 +429,6 @@
    "county": "delaware"
  },
  {
-   "FIELD1": 13,
    "county_number": 13,
    "equip_count": 18,
    "sq_ft": 200000,
@@ -476,7 +462,6 @@
    "county": "dutchess"
  },
  {
-   "FIELD1": 14,
    "county_number": 14,
    "equip_count": 55,
    "sq_ft": 576000,
@@ -510,7 +495,6 @@
    "county": "erie"
  },
  {
-   "FIELD1": 15,
    "county_number": 15,
    "equip_count": 0,
    "sq_ft": 0,
@@ -544,7 +528,6 @@
    "county": "essex"
  },
  {
-   "FIELD1": 16,
    "county_number": 16,
    "equip_count": 0,
    "sq_ft": 0,
@@ -578,7 +561,6 @@
    "county": "franklin"
  },
  {
-   "FIELD1": 17,
    "county_number": 17,
    "equip_count": 218,
    "sq_ft": 228690,
@@ -612,7 +594,6 @@
    "county": "fulton"
  },
  {
-   "FIELD1": 18,
    "county_number": 18,
    "equip_count": 7,
    "sq_ft": 198057,
@@ -646,7 +627,6 @@
    "county": "genesee"
  },
  {
-   "FIELD1": 19,
    "county_number": 19,
    "equip_count": 0,
    "sq_ft": 0,
@@ -680,7 +660,6 @@
    "county": "greene"
  },
  {
-   "FIELD1": 20,
    "county_number": 20,
    "equip_count": 0,
    "sq_ft": 0,
@@ -714,7 +693,6 @@
    "county": "hamilton"
  },
  {
-   "FIELD1": 21,
    "county_number": 21,
    "equip_count": 0,
    "sq_ft": 0,
@@ -748,7 +726,6 @@
    "county": "herkimer"
  },
  {
-   "FIELD1": 22,
    "county_number": 22,
    "equip_count": 20,
    "sq_ft": 254057,
@@ -782,7 +759,6 @@
    "county": "jefferson"
  },
  {
-   "FIELD1": 23,
    "county_number": 23,
    "equip_count": 382,
    "sq_ft": 3528907,
@@ -816,7 +792,6 @@
    "county": "kings"
  },
  {
-   "FIELD1": 24,
    "county_number": 24,
    "equip_count": 0,
    "sq_ft": 0,
@@ -850,7 +825,6 @@
    "county": "lewis"
  },
  {
-   "FIELD1": 25,
    "county_number": 25,
    "equip_count": 0,
    "sq_ft": 0,
@@ -884,7 +858,6 @@
    "county": "livingston"
  },
  {
-   "FIELD1": 26,
    "county_number": 26,
    "equip_count": 0,
    "sq_ft": 0,
@@ -918,7 +891,6 @@
    "county": "madison"
  },
  {
-   "FIELD1": 27,
    "county_number": 27,
    "equip_count": 75,
    "sq_ft": 630057,
@@ -952,7 +924,6 @@
    "county": "monroe"
  },
  {
-   "FIELD1": 28,
    "county_number": 28,
    "equip_count": 110,
    "sq_ft": 228690,
@@ -986,7 +957,6 @@
    "county": "montgomery"
  },
  {
-   "FIELD1": 29,
    "county_number": 29,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1020,7 +990,6 @@
    "county": "nassau"
  },
  {
-   "FIELD1": 30,
    "county_number": 30,
    "equip_count": 3865,
    "sq_ft": 45640971,
@@ -1054,7 +1023,6 @@
    "county": "newyork"
  },
  {
-   "FIELD1": 31,
    "county_number": 31,
    "equip_count": 27,
    "sq_ft": 198057,
@@ -1088,7 +1056,6 @@
    "county": "niagara"
  },
  {
-   "FIELD1": 32,
    "county_number": 32,
    "equip_count": 21,
    "sq_ft": 486057,
@@ -1122,7 +1089,6 @@
    "county": "oneida"
  },
  {
-   "FIELD1": 33,
    "county_number": 33,
    "equip_count": 41,
    "sq_ft": 794171,
@@ -1156,7 +1122,6 @@
    "county": "onondaga"
  },
  {
-   "FIELD1": 34,
    "county_number": 34,
    "equip_count": 23,
    "sq_ft": 198057,
@@ -1190,7 +1155,6 @@
    "county": "ontario"
  },
  {
-   "FIELD1": 35,
    "county_number": 35,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1224,7 +1188,6 @@
    "county": "orange"
  },
  {
-   "FIELD1": 36,
    "county_number": 36,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1258,7 +1221,6 @@
    "county": "orleans"
  },
  {
-   "FIELD1": 37,
    "county_number": 37,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1292,7 +1254,6 @@
    "county": "oswego"
  },
  {
-   "FIELD1": 38,
    "county_number": 38,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1326,7 +1287,6 @@
    "county": "otsego"
  },
  {
-   "FIELD1": 39,
    "county_number": 39,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1360,7 +1320,6 @@
    "county": "putnam"
  },
  {
-   "FIELD1": 40,
    "county_number": 40,
    "equip_count": 229,
    "sq_ft": 5664184,
@@ -1394,7 +1353,6 @@
    "county": "queens"
  },
  {
-   "FIELD1": 41,
    "county_number": 41,
    "equip_count": 22,
    "sq_ft": 403000,
@@ -1428,7 +1386,6 @@
    "county": "rensselaer"
  },
  {
-   "FIELD1": 42,
    "county_number": 42,
    "equip_count": 4,
    "sq_ft": 198057,
@@ -1462,7 +1419,6 @@
    "county": "richmond"
  },
  {
-   "FIELD1": 43,
    "county_number": 43,
    "equip_count": 9,
    "sq_ft": 2191057,
@@ -1496,7 +1452,6 @@
    "county": "rockland"
  },
  {
-   "FIELD1": 44,
    "county_number": 44,
    "equip_count": 31,
    "sq_ft": 457057,
@@ -1530,7 +1485,6 @@
    "county": "saratoga"
  },
  {
-   "FIELD1": 45,
    "county_number": 45,
    "equip_count": 6,
    "sq_ft": 144000,
@@ -1564,7 +1518,6 @@
    "county": "schenectady"
  },
  {
-   "FIELD1": 46,
    "county_number": 46,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1598,7 +1551,6 @@
    "county": "schoharie"
  },
  {
-   "FIELD1": 47,
    "county_number": 47,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1632,7 +1584,6 @@
    "county": "schuyler"
  },
  {
-   "FIELD1": 48,
    "county_number": 48,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1666,7 +1617,6 @@
    "county": "seneca"
  },
  {
-   "FIELD1": 49,
    "county_number": 49,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1700,7 +1650,6 @@
    "county": "st.lawrence"
  },
  {
-   "FIELD1": 50,
    "county_number": 50,
    "equip_count": 14,
    "sq_ft": 0,
@@ -1734,7 +1683,6 @@
    "county": "steuben"
  },
  {
-   "FIELD1": 51,
    "county_number": 51,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1768,7 +1716,6 @@
    "county": "suffolk"
  },
  {
-   "FIELD1": 52,
    "county_number": 52,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1802,7 +1749,6 @@
    "county": "sullivan"
  },
  {
-   "FIELD1": 53,
    "county_number": 53,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1836,7 +1782,6 @@
    "county": "tioga"
  },
  {
-   "FIELD1": 54,
    "county_number": 54,
    "equip_count": 12,
    "sq_ft": 56000,
@@ -1870,7 +1815,6 @@
    "county": "tompkins"
  },
  {
-   "FIELD1": 55,
    "county_number": 55,
    "equip_count": 137,
    "sq_ft": 652114,
@@ -1904,7 +1848,6 @@
    "county": "ulster"
  },
  {
-   "FIELD1": 56,
    "county_number": 56,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1938,7 +1881,6 @@
    "county": "warren"
  },
  {
-   "FIELD1": 57,
    "county_number": 57,
    "equip_count": 0,
    "sq_ft": 0,
@@ -1972,7 +1914,6 @@
    "county": "washington"
  },
  {
-   "FIELD1": 58,
    "county_number": 58,
    "equip_count": 0,
    "sq_ft": 0,
@@ -2006,7 +1947,6 @@
    "county": "wayne"
  },
  {
-   "FIELD1": 59,
    "county_number": 59,
    "equip_count": 99,
    "sq_ft": 1223414,
@@ -2040,7 +1980,6 @@
    "county": "westchester"
  },
  {
-   "FIELD1": 60,
    "county_number": 60,
    "equip_count": 15,
    "sq_ft": 0,
@@ -2074,7 +2013,6 @@
    "county": "wyoming"
  },
  {
-   "FIELD1": 61,
    "county_number": 61,
    "equip_count": 0,
    "sq_ft": 0,
