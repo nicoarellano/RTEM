@@ -1,5 +1,5 @@
 // CESIUM
-var cesiumContainer = document.getElementById("cesiumContainer");
+const cesiumContainer = document.getElementById("cesiumContainer");
 initCesium();
 
 function initCesium() {
@@ -68,7 +68,6 @@ function initCesium() {
           countyLat,
           200000
         );
-        // viewer.camera.flyTo({ destination: countyLoc });
         const footer = document.getElementById("footer");
         setCoordinates(countyLng, countyLat, footer);
         const showBldgs = this.value !== "" ? "block" : "none";
@@ -110,9 +109,50 @@ function initCesium() {
   var toggleGoTo = true;
   goTo.onclick = function () {
     if (toggleGoTo) {
+      graphsViewer.style.display = "block";
       this.textContent = "🌎 Go to State";
       // Fly To Buildings
-      flyTo(viewer, -73.99452, 		40.75641, 350, -45.0, 0);
+      flyTo(viewer, -73.99452, 40.75641, 350, -45.0, 0);
+      // Load OSM 🏢
+      var bldgs = "${elementId} === 3573251 ||" + "${elementId} === 265517913";
+      var range = document.getElementById("myRange");
+      getJson(
+        "https://raw.githubusercontent.com/nicoarellano/RTEM/main/assets/data/daily_co2_temp_hospitality_426_new_york.json"
+      ).then((data) => {
+        range.addEventListener("input", function () {
+          // COLOURS 🎨
+          var hexColor = perc2color(this.value / 10.97);
+          var timestamp = data[this.value].timestamp;
+          var date = new Date(timestamp);
+          date = date.toString();
+          document.getElementById("timestamp").innerHTML = date.slice(0, 16);
+          // CO2 INSIDE 📩
+          var co2_inside = Math.round(data[this.value].co2_inside);
+          var co2_inside_hex = perc2color((co2_inside + 286) / 17.56)
+          var co2_inside_html = document.getElementById("co2_inside")
+          co2_inside_html.innerHTML = co2_inside;
+          co2_inside_html.style.background = co2_inside_hex
+          // CO2 OUTSIDE 🅾️
+          var co2_outside = Math.round(data[this.value].co2_outside);
+          var co2_outside_hex = perc2color((co2_outside + 10) / 3.20)
+          var co2_outside_html = document.getElementById("co2_outside")
+          co2_outside_html.innerHTML = co2_outside;
+          // co2_outside_html.style.background = co2_outside_hex
+          // TEMP 🌡️
+          var heat_pump_zone_temp = Math.round(data[this.value].heat_pump_zone_temp);
+          document.getElementById("heat_pump_zone_temp").innerHTML = heat_pump_zone_temp;
+
+          console.log();
+          buildingTileset.style = new Cesium.Cesium3DTileStyle({
+            color: {
+              conditions: [[bldgs, "color('" + co2_inside_hex + "')"]],
+            },
+            show: {
+              conditions: [["${elementId} === 949254697", false]],
+            },
+          });
+        });
+      });
     } else {
       this.textContent = "🏢 Go to Building";
       // Fly to Counties
@@ -120,20 +160,20 @@ function initCesium() {
     }
     toggleGoTo = !toggleGoTo;
 
-    document.getElementById("footer").style.display = toggleGoTo? "none" : "block";
+    document.getElementById("footer").style.display = toggleGoTo
+      ? "none"
+      : "block";
   };
 
-  const showGraphs = document.getElementById("show-graphs");
+  var showGraphs = document.getElementById("show-graphs");
   const graphsViewer = document.getElementById("graphs-viewer");
   var toggleGraphs = true;
   showGraphs.onclick = function () {
     if (toggleGraphs) {
       this.textContent = "📉 Hide Graphs";
-      var showGraphs = document.getElementById("graphs-viewer");
       graphsViewer.style.display = "block";
     } else {
       this.textContent = "📈 Show Graphs";
-      var showGraphs = document.getElementById("graphs-viewer");
       graphsViewer.style.display = "none";
     }
     toggleGraphs = !toggleGraphs;
@@ -146,29 +186,6 @@ function initCesium() {
 
   // Fly the camera to the NY State.
   flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
-
-  // Load OSM
-  let loadOSM = document.getElementById("load-osm");
-  var bldgs =
-  "${elementId} === 3573251 ||" +  
-    "${elementId} === 	265517913";
-  var range = document.getElementById("myRange");
-
-  range.addEventListener("input", function () {
-    var hexColor = perc2color(this.value/0.24);
-    console.log(this.value);
-    buildingTileset.style = new Cesium.Cesium3DTileStyle({
-      color: {
-        conditions: [
-          [bldgs, "color('" + hexColor +"')"], 
-          // ["true", 'color("white", 1)'], // All remaining buildings
-        ],
-      },
-      show: {
-        conditions: [["${elementId} === 949254697", false]],
-      },
-    });
-  });
 }
 
 async function getJson(path) {

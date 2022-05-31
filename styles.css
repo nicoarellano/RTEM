@@ -12,6 +12,50 @@ body {
   background-color: black;
 }
 
+.graphs-viewer {
+  z-index: 100;
+  padding: 15px;
+  overflow:auto;
+  max-height: 85vh;
+  list-style-type: none;
+  position: absolute;
+  right: 0px;
+  top: 60px;
+  background-color: rgba(251, 184, 41, 0.7);
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  margin: 5px auto;
+  max-width: 30%;
+  min-height: 80%;
+}
+
+.graphs-viewer:hover {
+  opacity: 1;
+  background-color: rgba(251, 184, 41, 0.8);
+  max-width: 60%;
+}
+
+.graphs-viewer img {
+  margin: auto;
+  width: 95%;
+  margin: 15px;
+}
+
+.graphs-viewer img:hover {
+  box-shadow: 0 0 2px 1px black;
+}
+
+.data{
+  font-size: 5rem;
+}
+
+.footer span{
+  display:inline-block;    
+  width:16%;
+  text-align:center;
+  font-weight: bold;
+}
+
 .header {
   font-size: 42px;
   color: rgba(251, 184, 41);
@@ -23,6 +67,7 @@ body {
 .menu {
   list-style-type: none;
   position: absolute;
+  max-width: 40vw;
   top: 50px;
   left: -5px;
   line-height: 150%;
@@ -41,30 +86,28 @@ body {
 }
 
 .footer {
-  /* display: none; */
+  display: none;
+  z-index: 100;
   position: absolute;
+  bottom: 0vh;
   margin: 0 auto;
   align-items: center;
   text-justify: auto;
-  text-align:justify;
-  background-color: rgba(251, 184, 41);
-  opacity: 0.5;
-  padding: 10px;
+  text-align:center;
+  background-color: rgba(251, 184, 41, 0.8);
+  opacity: 0.7;
+  padding-top:  10px;
+  padding-left: 10px;
+  padding-right: 10px;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
-  bottom: 0px;  
   width: 50vw;
-  left: 15vw;
+  left: 25vw;
 }
 
 .footer:hover {
-  background-color: rgba(251, 184, 41);
+  background-color: rgba(251, 184, 41, 0.8);
   opacity: 1;
-}
-
-span {
-  width:100%;
-  font-size: 1.045vw;
 }
 
 .slidecontainer {
@@ -80,6 +123,7 @@ span {
   appearance: none;
   width: 100%; /* Full-width */
   height: 20px; /* Specified height */
+  /* background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 50%, rgba(0,255,0,1) 100%); */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -99,33 +143,6 @@ span {
   height: 20px; /* Slider handle height */
   background: black; /* Green background */
   cursor: pointer; /* Cursor on hover */
-}
-
-.graphs-viewer {
-  z-index: 100;
-  overflow:auto;
-  max-height: 85vh;
-  list-style-type: none;
-  position: absolute;
-  right: 0px;
-  top: 60px;
-  background-color: rgba(251, 184, 41, 0.6);
-  border-top-left-radius: 15px;
-  border-bottom-left-radius: 15px;
-  margin: 5px;
-  padding: 10px;
-  max-width: 30%;
-  min-height: 80%;
-}
-
-.graphs-viewer:hover {
-  background-color: rgba(251, 184, 41, 0.8);
-}
-
-img {
-  margin: auto;
-  max-width: 95%;
-  margin: 15px;
 }
 
 .checkbox {
@@ -524,14 +541,13 @@ img {
 .cesium-widget,
 .cesium-widget canvas {
   width: 100vw;
-  height: 100vh;
+  height: 95.3vh;
   touch-action: none;
 }
 .cesium-widget-credits {
   display: block;
   position: absolute;
-  bottom: 0;
-  left: 0;
+  left: 5px;
   color: #fff;
   font-size: 10px;
   text-shadow: 0 0 2px #000;
