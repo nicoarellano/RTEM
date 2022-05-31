@@ -104,12 +104,20 @@ function initCesium() {
       baseLayerPickerViewModel.imageryProviderViewModels[labels];
     toggleMapView = !toggleMapView;
   };
-
   const goTo = document.getElementById("go-to");
+  const stateGraphs = document.getElementById("state-graphs");
+  const countyGraphs = document.getElementById("county-graphs");
+  const buildingGraphs = document.getElementById("building-graphs");
+
   var toggleGoTo = true;
   goTo.onclick = function () {
     if (toggleGoTo) {
+      // Graphs 📈
       graphsViewer.style.display = "block";
+      stateGraphs.style.display = "none";
+      countyGraphs.style.display = "none";
+      buildingGraphs.style.display = "block";
+
       this.textContent = "🌎 Go to State";
       // Fly To Buildings
       flyTo(viewer, -73.99452, 40.75641, 350, -45.0, 0);
@@ -156,6 +164,8 @@ function initCesium() {
     } else {
       this.textContent = "🏢 Go to Building";
       graphsViewer.style.display = "none";
+      buildingGraphs.style.display = "none";
+      stateGraphs.style.display = "block";
       // Fly to Counties
       flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
     }
