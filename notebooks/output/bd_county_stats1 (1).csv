@@ -1,0 +1,230 @@
+,building_id,city,county,county_number,equip_count,info.customerType,sq_ft
+0,441,bronx,bronx,2,20,Multifamily,551143.0
+1,140,newyork,newyork,30,13,Commercial Office,21869.0
+2,191,victor,ontario,34,7,Commercial Retail,198057.0
+3,231,newyork,newyork,30,4,,
+4,248,newyork,newyork,30,7,Multifamily,127000.0
+5,249,newyork,newyork,30,2,Commercial Retail,120000.0
+6,434,brooklyn,kings,23,10,Multifamily,56090.0
+7,271,newyork,newyork,30,13,College/University,32240.0
+8,285,whiteplains,westchester,59,7,Commercial Retail,198057.0
+9,297,watertown,jefferson,22,8,Commercial Retail,198057.0
+10,322,newhartford,oneida,32,7,Commercial Retail,198057.0
+11,317,newyork,newyork,30,2,Multifamily,35000.0
+12,419,newyork,newyork,30,32,College/University,130000.0
+13,375,bronx,bronx,2,4,Multifamily,232808.0
+14,470,newyork,newyork,30,205,Commercial Office,
+15,426,newyork,newyork,30,92,Hospitality,80000.0
+16,423,queens,queens,40,139,Multifamily,119710.0
+17,439,newyork,newyork,30,1,Commercial Office,3000000.0
+18,314,newyork,newyork,30,9,Commercial Office,100000.0
+19,467,brooklyn,kings,23,2,Multifamily,
+20,455,brooklyn,kings,23,30,Chemicals,
+21,105,kingston,ulster,55,14,Food/Beverage,56000.0
+22,107,newyork,newyork,30,42,Commercial Office,50000.0
+23,488,newyork,newyork,30,39,Commercial Office,
+24,445,newyork,newyork,30,2,Multifamily,33220.0
+25,417,newyork,newyork,30,45,Commercial Office,1898155.0
+26,460,flushing,queens,40,2,Healthcare,
+27,472,corning,steuben,50,14,College/University,
+28,442,rye,westchester,59,26,Multifamily,205000.0
+29,118,newyork,newyork,30,122,Commercial Retail,275000.0
+30,477,newyork,newyork,30,27,Healthcare,
+31,443,newyork,newyork,30,10,College/University,600000.0
+32,468,bronxville,westchester,59,1,Multifamily,
+33,438,newyork,newyork,30,221,Commercial Office,1500000.0
+34,478,rochester,ulster,55,48,K-12 School,
+35,395,newyork,newyork,30,9,Hospitality,171129.0
+36,485,newyork,newyork,30,20,Commercial Office,
+37,418,newyork,newyork,30,393,Manufacturing,2800000.0
+38,450,newyork,newyork,30,19,Commercial Office,665000.0
+39,473,warsaw,wyoming,60,15,K-12 School,
+40,230,newyork,newyork,30,91,Multifamily,1040873.0
+41,127,flushing,queens,40,11,Multifamily,789079.0
+42,469,whiteplains,westchester,59,2,Multifamily,
+43,100,newyork,newyork,30,3,Multifamily,153750.0
+44,452,newyork,newyork,30,189,Commercial Office,1028336.0
+45,461,newyork,newyork,30,2,Commercial Retail,47092.0
+46,489,newyork,newyork,30,85,Commercial Office,
+47,99,brooklyn,kings,23,126,Multifamily,869066.0
+48,98,newyork,newyork,30,38,Commercial Office,2338000.0
+49,479,pittsford,monroe,27,50,K-12 School,
+50,474,lewiston,niagara,31,22,Healthcare,
+51,466,longislandcity,queens,40,2,Multifamily,
+52,134,newyork,newyork,30,129,Commercial Office,12000.0
+53,131,brooklyn,kings,23,3,Commercial Retail,205000.0
+54,130,newyork,newyork,30,16,K-12 School,145000.0
+55,420,newyork,newyork,30,342,Healthcare,236000.0
+56,136,bronx,bronx,2,2,Multifamily,274096.0
+57,475,canandaigua,ontario,34,16,College/University,
+58,373,newyork,newyork,30,2,Multifamily,127577.0
+59,176,newyork,newyork,30,3,Commercial Retail,150000.0
+60,217,newyork,newyork,30,9,Commercial Office,229154.0
+61,490,brooklyn,kings,23,1,Multifamily,782298.0
+62,103,newyork,newyork,30,16,Commercial Office,563391.0
+63,421,newyork,newyork,30,2,Multifamily,7960.0
+64,476,woodside,queens,40,3,Healthcare,110000.0
+65,142,newyork,newyork,30,12,Commercial Office,2400000.0
+66,462,bronx,bronx,2,2,Multifamily,76800.0
+67,422,bronx,bronx,2,16,Multifamily,352360.0
+68,503,newyork,newyork,30,35,Commercial Office,
+69,385,newyork,newyork,30,13,Healthcare,180000.0
+70,471,rochester,ulster,55,43,Healthcare,
+71,108,yonkers,westchester,59,6,,
+72,143,manhattan,newyork,30,1,Multifamily,16903.0
+73,454,newyork,newyork,30,13,Commercial Office,
+74,279,newyork,newyork,30,12,Food/Beverage,25000.0
+75,481,queens,queens,40,27,Healthcare,
+76,101,newyork,newyork,30,70,Hospitality,20000.0
+77,491,newyork,newyork,30,9,Multifamily,
+78,492,newyork,newyork,30,43,Hospitality,
+79,111,newyork,newyork,30,2,Multifamily,13512.0
+80,109,newyork,newyork,30,31,Multifamily,357001.0
+81,451,brooklyn,kings,23,2,Multifamily,49428.0
+82,258,newyork,newyork,30,66,Multifamily,135000.0
+83,112,newyork,newyork,30,13,Commercial Office,210000.0
+84,440,newyork,newyork,30,18,Commercial Office,268000.0
+85,483,flushing,queens,40,28,Healthcare,
+86,113,newyork,newyork,30,12,Multifamily,63550.0
+87,114,bronx,bronx,2,1,College/University,240900.0
+88,119,brooklyn,kings,23,111,Not For Profit,98122.0
+89,200,newyork,newyork,30,55,Multifamily,1040873.0
+90,117,newyork,newyork,30,26,Healthcare,179000.0
+91,121,newyork,newyork,30,11,Commercial Office,236067.0
+92,120,newyork,newyork,30,120,Commercial Office,600000.0
+93,122,middletown,delaware,12,12,Food/Beverage,56000.0
+94,484,newyork,newyork,30,12,Commercial Office,699000.0
+95,110,newyork,newyork,30,17,Commercial Office,789079.0
+96,151,nanuet,rockland,43,6,Commercial Retail,198057.0
+97,153,bronx,bronx,2,5,Multifamily,20025.0
+98,129,newyork,newyork,30,32,Commercial Office,1200000.0
+99,148,bronx,bronx,2,4,Multifamily,789079.0
+100,115,newyork,newyork,30,29,Commercial Office,1073894.0
+101,116,brooklyn,kings,23,3,Commercial Retail,205000.0
+102,125,yonkers,westchester,59,3,Commercial Retail,8500.0
+103,126,bronx,bronx,2,8,Multifamily,52096.0
+104,486,newyork,newyork,30,63,Commercial Office,
+105,465,newyork,newyork,30,54,Commercial Office,470000.0
+106,132,hudson,columbia,10,7,Commercial Retail,198057.0
+107,124,queens,queens,40,1,Commercial Retail,700000.0
+108,135,newyork,newyork,30,2,Commercial Retail,200000.0
+109,487,newyork,newyork,30,94,Commercial Office,667000.0
+110,138,bronx,bronx,2,2,Multifamily,15750.0
+111,137,brooklyn,kings,23,23,Commercial Office,221704.0
+112,128,bronx,bronx,2,5,Multifamily,252105.0
+113,141,newyork,newyork,30,41,Commercial Office,1325000.0
+114,145,bronx,bronx,2,6,Multifamily,43299.0
+115,147,niagarafalls,niagara,31,5,Commercial Retail,198057.0
+116,149,manhattan,newyork,30,3,Multifamily,31152.0
+117,171,newyork,newyork,30,3,Multifamily,23400.0
+118,146,newyork,newyork,30,41,Commercial Office,281755.0
+119,162,hudson,columbia,10,179,K-12 School,373700.0
+120,163,manhattan,newyork,30,3,Multifamily,20000.0
+121,165,fairport,monroe,27,7,Commercial Retail,144000.0
+122,168,bronx,bronx,2,9,Healthcare,900000.0
+123,172,syracuse,onondaga,33,6,Commercial Retail,198057.0
+124,173,statenisland,richmond,42,4,Commercial Retail,198057.0
+125,170,flushing,queens,40,4,Multifamily,789079.0
+126,167,depew,erie,14,5,Commercial Retail,144000.0
+127,160,penfield,monroe,27,6,Commercial Retail,144000.0
+128,174,newyork,newyork,30,22,Commercial Office,250000.0
+129,175,rochester,ulster,55,7,Commercial Retail,198057.0
+130,169,brooklyn,kings,23,20,Multifamily,552860.0
+131,164,watertown,jefferson,22,12,Food/Beverage,56000.0
+132,179,poughkeepsie,dutchess,13,11,Food/Beverage,56000.0
+133,197,newyork,newyork,30,2,Multifamily,75165.0
+134,139,ossining,westchester,59,5,Food/Beverage,9000.0
+135,192,bronx,bronx,2,2,Multifamily,274096.0
+136,194,newyork,newyork,30,6,Commercial Office,1700000.0
+137,177,cheektowaga,erie,14,7,Commercial Retail,144000.0
+138,181,newyork,newyork,30,53,Multifamily,115020.0
+139,183,bronx,bronx,2,2,Multifamily,274096.0
+140,185,newyork,newyork,30,26,Commercial Office,2486000.0
+141,187,vestal,broome,3,8,Commercial Retail,198057.0
+142,188,glenville,schenectady,45,6,Commercial Retail,144000.0
+143,190,amsterdam,montgomery,28,110,K-12 School,228690.0
+144,180,brooklyn,kings,23,4,Multifamily,12285.0
+145,206,bayside,queens,40,5,Multifamily,789079.0
+146,207,newyork,newyork,30,34,Commercial Retail,44627.0
+147,201,guilderland,albany,0,8,Not For Profit,259000.0
+148,202,eastgreenbush,rensselaer,41,13,Not For Profit,259000.0
+149,205,thornwood,westchester,59,7,Food/Beverage,8500.0
+150,210,saratogasprings,saratoga,44,7,Commercial Retail,198057.0
+151,215,flushing,queens,40,2,Multifamily,789079.0
+152,216,bronx,bronx,2,2,Multifamily,274096.0
+153,220,cicero,onondaga,33,8,Commercial Retail,198057.0
+154,224,bronx,bronx,2,2,Multifamily,274096.0
+155,225,horseheads,chemung,7,8,Commercial Retail,198057.0
+156,226,newhartford,oneida,32,6,Commercial Retail,144000.0
+157,236,cicero,onondaga,33,7,Commercial Retail,144000.0
+158,234,newyork,newyork,30,16,Commercial Office,121758.0
+159,232,mamaroneck,westchester,59,4,Multifamily,50000.0
+160,246,newyork,newyork,30,5,Commercial Office,360000.0
+161,250,newyork,newyork,30,3,Multifamily,120721.0
+162,252,brooklyn,kings,23,8,Commercial Retail,198057.0
+163,253,flushing,queens,40,3,Multifamily,789079.0
+164,256,pearlriver,rockland,43,3,Manufacturing,1993000.0
+165,247,newyork,newyork,30,13,Healthcare,47040.0
+166,259,broadalbin,fulton,17,218,K-12 School,228690.0
+167,242,newyork,newyork,30,4,Commercial Office,364000.0
+168,263,portchester,westchester,59,2,Multifamily,88800.0
+169,264,rochester,ulster,55,4,Commercial Retail,144000.0
+170,272,flushing,queens,40,2,Multifamily,789079.0
+171,274,westseneca,erie,14,7,Commercial Retail,144000.0
+172,275,newyork,newyork,30,6,Commercial Office,522000.0
+173,277,latham,albany,0,6,Commercial Retail,198057.0
+174,278,manhattan,newyork,30,5,Multifamily,31220.0
+175,282,ithaca,tompkins,54,12,Food/Beverage,56000.0
+176,265,saratogasprings,saratoga,44,5,,
+177,286,newyork,newyork,30,54,Commercial Office,900000.0
+178,288,brooklyn,kings,23,14,Commercial Retail,100000.0
+179,294,fishkill,dutchess,13,7,Commercial Retail,144000.0
+180,296,newyork,newyork,30,16,Healthcare,367995.0
+181,298,bronx,bronx,2,6,Multifamily,42000.0
+182,301,newyork,newyork,30,7,Multifamily,250000.0
+183,302,newyork,newyork,30,21,Hospitality,625844.0
+184,307,rochester,ulster,55,12,Food/Beverage,56000.0
+185,311,newyork,newyork,30,25,Healthcare,390000.0
+186,313,newyork,newyork,30,4,Multifamily,115860.0
+187,324,bronx,bronx,2,53,Food/Beverage,145079.0
+188,326,newyork,newyork,30,3,Multifamily,11500.0
+189,327,moheganlake,westchester,59,6,Commercial Retail,198057.0
+190,330,valhalla,westchester,59,11,College/University,200000.0
+191,332,newyork,newyork,30,4,Commercial Retail,120000.0
+192,341,bronx,bronx,2,2,Multifamily,274096.0
+193,349,mountvernon,westchester,59,3,Multifamily,90000.0
+194,350,syracuse,onondaga,33,7,Commercial Retail,198057.0
+195,354,hudson,columbia,10,197,K-12 School,373700.0
+196,361,greece,monroe,27,5,Commercial Retail,144000.0
+197,372,johnsoncity,broome,3,6,Commercial Retail,198057.0
+198,371,newyork,newyork,30,7,Multifamily,176584.0
+199,378,cliftonpark,saratoga,44,19,Not For Profit,259000.0
+200,380,horseheads,chemung,7,12,Food/Beverage,56000.0
+201,381,brooklyn,kings,23,3,Multifamily,156250.0
+202,396,brooklyn,kings,23,22,Hospitality,22747.0
+203,357,mamaroneck,westchester,59,6,Multifamily,150000.0
+204,386,kingston,ulster,55,9,Commercial Retail,198057.0
+205,387,delmar,albany,0,38,Not For Profit,259000.0
+206,389,newyork,newyork,30,24,Healthcare,338424.0
+207,390,bedfordhills,westchester,59,5,Food/Beverage,8500.0
+208,391,newyork,newyork,30,35,Healthcare,350000.0
+209,392,newyork,newyork,30,6,Commercial Office,399613.0
+210,394,newyork,newyork,30,59,Commercial Office,725000.0
+211,393,newyork,newyork,30,5,Commercial Office,1100000.0
+212,384,newyork,newyork,30,84,Multifamily,1040873.0
+213,123,newyork,newyork,30,39,Commercial Retail,330000.0
+214,154,newyork,newyork,30,8,Multifamily,357297.0
+215,155,troy,rensselaer,41,9,Commercial Retail,144000.0
+216,157,syracuse,onondaga,33,13,Food/Beverage,56000.0
+217,158,tarrytown,westchester,59,5,Food/Beverage,9000.0
+218,166,batavia,genesee,18,7,Commercial Retail,198057.0
+219,184,manhattan,newyork,30,3,Multifamily,52782.0
+220,214,newyork,newyork,30,4,Multifamily,12000.0
+221,239,bronx,bronx,2,11,K-12 School,450000.0
+222,260,rome,oneida,32,8,Commercial Retail,144000.0
+223,316,blasdell,erie,14,36,Commercial Retail,144000.0
+224,353,henrietta,monroe,27,7,Commercial Retail,198057.0
+225,370,newyork,newyork,30,5,Hospitality,421316.0
+226,383,newyork,newyork,30,11,Commercial Office,75000.0
+227,398,newyork,newyork,30,26,Commercial Office,860000.0
+228,399,newyork,newyork,30,8,Commercial Office,140400.0
