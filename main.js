@@ -155,6 +155,7 @@ function initCesium() {
       });
     } else {
       this.textContent = "🏢 Go to Building";
+      graphsViewer.style.display = "none";
       // Fly to Counties
       flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
     }
