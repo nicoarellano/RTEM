@@ -13,18 +13,15 @@ body pre{
 }
 
 .graphs-viewer {
-  z-index: 100;
   padding: 20px;
   overflow:auto;
   top: 50px;
   right: 0;
-  width: 40%;
-  max-width: 480px;
+  width: 480px;
+  max-width: 60vw;
   max-height: 46vh;
   top: 50px;
   right: 0;
-  width: 40%;
-  max-width: 480px;
   list-style-type: none;
   position: absolute;
   right: 0px;
@@ -34,6 +31,7 @@ body pre{
   border-bottom-left-radius: 15px;
   margin: 5px auto;
   box-shadow: 0 0 10px 1px #000;
+  width:fit-content;
 }
 
 .graphs-viewer:hover {
@@ -43,12 +41,15 @@ body pre{
 
 .graphs-viewer img {
   margin: auto;
-  width: 95%;
+  right: 5px;
+  width: 456px;
   margin: 15px;
 }
 
 .graphs-viewer img:hover {
   box-shadow: 0 0 2px 1px black;
+  width:fit-content;
+  max-width: 60vw;
 }
 
 .graphs-viewer p{
