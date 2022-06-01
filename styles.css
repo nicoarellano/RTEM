@@ -5,7 +5,7 @@
 }
 
 html,
-body {
+body pre{
   overflow: hidden;
   font-family: sans-serif;
   color: black;
@@ -14,25 +14,31 @@ body {
 
 .graphs-viewer {
   z-index: 100;
-  padding: 15px;
+  padding: 20px;
   overflow:auto;
-  max-height: 85vh;
+  top: 50px;
+  right: 0;
+  width: 40%;
+  max-width: 480px;
+  max-height: 46vh;
+  top: 50px;
+  right: 0;
+  width: 40%;
+  max-width: 480px;
   list-style-type: none;
   position: absolute;
   right: 0px;
-  top: 60px;
+  top: 8%;
   background-color: rgba(251, 184, 41, 0.7);
   border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   margin: 5px auto;
-  max-width: 30%;
-  min-height: 80%;
+  box-shadow: 0 0 10px 1px #000;
 }
 
 .graphs-viewer:hover {
   opacity: 1;
   background-color: rgba(251, 184, 41, 0.8);
-  max-width: 60%;
 }
 
 .graphs-viewer img {
@@ -45,8 +51,53 @@ body {
   box-shadow: 0 0 2px 1px black;
 }
 
+.graphs-viewer p{
+margin: 5px;
+padding: 10px;
+border-radius: 15px;
+font-size: 2rem;
+}
+
+.legend {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 50%, rgba(0,255,0,1) 100%);
+  padding: 10px;
+  margin: 5px;
+  padding: 10px;
+  border-radius: 15px;
+  width: 95%;
+  max-width: 200px;
+  font-size: large;
+  font-weight: bold;
+}
+
 .data{
-  font-size: 5rem;
+  max-width: 30%;
+  text-align: center;
+}
+.footer {
+  display: none;
+  z-index: 100;
+  position: absolute;
+  bottom: 0vh;
+  margin: 0 auto;
+  align-items: center;
+  text-justify: auto;
+  text-align:center;
+  background-color: rgba(251, 184, 41, 0.8);
+  opacity: 0.7;
+  padding-top:  10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  width: 50vw;
+  left: 25vw;
+}
+
+.footer:hover {
+  background-color: rgba(251, 184, 41, 0.8);
+  opacity: 1;
 }
 
 .footer span{
@@ -75,6 +126,7 @@ body {
   border-bottom-right-radius: 15px;
   margin: 5px;
   padding: 15px;
+  box-shadow: 0 0 10px 1px #000;
 }
 
 .menu:hover {
@@ -83,31 +135,6 @@ body {
 
 .menu:active {
   background-color: rgba(251, 184, 41);
-}
-
-.footer {
-  display: none;
-  z-index: 100;
-  position: absolute;
-  bottom: 0vh;
-  margin: 0 auto;
-  align-items: center;
-  text-justify: auto;
-  text-align:center;
-  background-color: rgba(251, 184, 41, 0.8);
-  opacity: 0.7;
-  padding-top:  10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-  width: 50vw;
-  left: 25vw;
-}
-
-.footer:hover {
-  background-color: rgba(251, 184, 41, 0.8);
-  opacity: 1;
 }
 
 .slidecontainer {
@@ -123,7 +150,6 @@ body {
   appearance: none;
   width: 100%; /* Full-width */
   height: 20px; /* Specified height */
-  /* background: linear-gradient(90deg, rgba(255,0,0,1) 0%, rgba(255,255,0,1) 50%, rgba(0,255,0,1) 100%); */
   background: #d3d3d3; /* Grey background */
   outline: none; /* Remove outline */
   -webkit-transition: .2s; /* 0.2 seconds transition on hover */
@@ -936,16 +962,17 @@ input.cesium-cesiumInspector-url {
   display: block;
   position: absolute;
   font-size: 18px;
-  top: 50px;
+  top: 50vh;
   right: 0;
   width: 40%;
   max-width: 480px;
-  background: rgba(38, 38, 38, 0.95);
+  max-height: 37vh;
+  background: rgba(251, 184, 41, 0.7);
   color: #000000;
   border: 1px solid #444;
   border-right: none;
-  border-top-left-radius: 7px;
-  border-bottom-left-radius: 7px;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
   box-shadow: 0 0 10px 1px #000;
   transform: translate(100%, 0);
   visibility: hidden;
@@ -963,8 +990,9 @@ input.cesium-cesiumInspector-url {
   font-size: 20px;
   height: 20px;
   padding: 5px 30px 5px 25px;
-  background: #545454;
-  border-top-left-radius: 7px;
+  background: black;
+  color: rgba(251, 184, 41, 0.7);
+  border-top-left-radius: 15px;
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1016,9 +1044,11 @@ button.cesium-infoBox-close:active {
 }
 .cesium-infoBox-bodyless .cesium-infoBox-iframe {
   display: none;
+  max-height: 10vh;
 }
 .cesium-infoBox-iframe {
   border: none;
+  height: 33vh !important;
   width: 100%;
   width: calc(100% - 2px);
 }

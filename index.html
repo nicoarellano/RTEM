@@ -37,17 +37,23 @@
       </select>
       <div class="button" id="map-view">🗺️ Map view</div>
       <div class="button" id="go-to">🏢 Go to Building</div>
-      <div class="button" id="show-graphs">📈 Show Graphs</div>
+      <div class="button" id="show-graphs">📉 Hide Graphs</div>
     </div>
   </side>
 
   <div id="show-graphs">
     <div class="graphs-viewer" id="graphs-viewer" style="display: none">
       <div id="state-graphs">
-        <h1>Graphs</h1><br>
+        <h1>New York State - Counties</h1><br>
+        <pre class="legend" id="counties-legend">MIN                   MAX</pre>
+        <select id="county-data-menu" class="dropdown" value="">
+          <option class="option" value="">-- select a dataset--</option>
+        </select>
         <h3 style="text-align: justify;" ;>Equipment per County</h3>
         <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/equipment_counts_per_county.png?raw=true"
           alt="g2">
+      </div>
+      <div id="county-graphs" style="display: none">
         <h3>Multifamily zone temperature by building (2020):</h3><br>
         <h3>New York</h3>
         <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true"
@@ -59,40 +65,33 @@
         <h3>Queens</h3>
         <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/queens_2020_multifamily.png?raw=true" alt="g5">
       </div>
-      <div id="county-graphs" style="display: none">
-        <h1 id="county-title">New York County</h1><br>
-        <h3>Multifamily zone temperature by building (2020):</h3><br>
-        <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true"
-          alt="g4">
-      </div>
       <div id="building-graphs" style="display: none">
-        <h1>New York - Theatre</h1><br>
-        <h3>Date:</h3>
-        <h1 id="timestamp">date</h1><br>
-        <h3>CO2 Inside:</h3>
-        <span id="co2_inside" class="data">0000</span><br>
-        <h3>CO2 Outside:</h3>
-        <span id="co2_outside" class="data">000</span><br>
-        <h3>Heat Pump Zone Temperature:</h3>
-        <span id="heat_pump_zone_temp" class="data">00</span><br><br>
-        <h3>Hourly Inside vs Outside CO2 - Theatre:</h3><br>
-        <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/Hourly%20Inside%20vs%20Outside%20co2%20-%20Theatre.png?raw=true"
-          alt="g4">
-        <h3>Multifamily zone temperature by building (2020):</h3>
-        <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true"
+        <h2>New York County - Building #426</h2><br>
+        <h4>Date:</h4>
+        <p id="timestamp">date</p>
+        <h4>CO2 Inside:</h4><pre class="legend">286                      1469</pre>
+        <p id="co2_inside" class="data">0000</p>
+        <h4>CO2 Outside:</h4>
+        <p id="co2_outside" class="data">000</p>
+        <h4>Heat Pump Zone Temperature:</h4>
+        <p id="heat_pump_zone_temp" class="data">00</p>
+        <h4>Hourly Inside vs Outside CO2:</h4>
+        <img
+          src="https://github.com/nicoarellano/RTEM/blob/main/graphs/Hourly%20Inside%20vs%20Outside%20co2%20-%20Theatre.png?raw=true"
           alt="g4">
       </div>
     </div>
   </div>
 
   <footer class="footer" id="footer" style="display: none;">
-    <input type="range" min="0" max="1096" value="548" class="slider" id="myRange"></input>
-    <span>2018</span>
-    <span>|</span>
-    <span>2019</span>
-    <span>|</span>
-    <span>2020</span>
-    <a id="coordinates"></a>
+    <div id="range-slider">
+      <input type="range" min="0" max="1096" value="548" class="slider" id="myRange"></input>
+      <span>2018</span>
+      <span>|</span>
+      <span>2019</span>
+      <span>|</span>
+      <span>2020</span>
+    </div>
   </footer>
 
 </body>

@@ -35,42 +35,78 @@ function initCesium() {
     const counties = nyData.features;
     const [countiesNames] = [[]];
     var countiesMenu = document.getElementById("counties-menu");
-    var data = [];
-    for (var i = 0; i <= 61; i++) {
-      data.push(i);
-    }
     var i = 0;
     counties.sort((a, b) => a.properties.name.localeCompare(b.properties.name));
-    counties.forEach((county) => {
-      const countyName = county.properties.name;
-      loadGraph1(county, viewer, data, i);
-      countiesNames.push(countyName);
-      var option = document.createElement("option");
-      option.innerHTML = countyName;
-      option.value = i;
-      countiesMenu.appendChild(option);
-      i++;
+    // Add Json Data
+    getJson(
+      "https://raw.githubusercontent.com/nicoarellano/RTEM/main/assets/data/county_Datasets.json"
+    ).then((countiesData) => {
+      const keys = Object.keys(countiesData[0]);
+      const countiesDataMenu = document.getElementById("county-data-menu");
+      keys.sort((a, b) => a.localeCompare(b));
+      keys.forEach((key) => {
+        var option = document.createElement("option");
+        option.value = key;
+        var keyName = key.replace("_", " ");
+        keyName = keyName.charAt(0).toUpperCase() + keyName.slice(1);
+        option.innerHTML = keyName;
+        countiesDataMenu.appendChild(option);
+      });
+
+      counties.forEach((county) => {
+        const countyName = county.properties.name;
+        countiesNames.push(countyName);
+        var option = document.createElement("option");
+        option.innerHTML = countyName;
+        option.value = i;
+        countiesMenu.appendChild(option);
+        Object.assign(county.properties, countiesData[[i]])
+        loadGraph1(county, viewer, "county_number", 0, 62);
+        i++;
+      });
+
+      // STATE LEVEL 🌎
+      
+      document
+        .getElementById("county-data-menu")
+        .addEventListener("change", function () {
+          var param = this.value;
+          if (param !== "") {
+            console.log(counties);
+            var max = 0;
+            var min = 1000000000000;
+            counties.forEach((county) => {
+              var value = county.properties[param]
+              value > max? max = value : max;
+              value != 0 && value < min? min = value : min;
+            });
+            counties.forEach((county) => {
+              viewer.dataSources.removeAll();
+              loadGraph1(county, viewer, param, min, max); 
+            })
+            document.getElementById("counties-legend").innerHTML = min + "                   " + max;
+            console.log(min, max);
+          }
+        });
     });
-    //  CREATE COUNTY MENU
+
+    //  COUNTY LEVEL 🏙️
     document
       .getElementById("counties-menu")
       .addEventListener("change", function () {
-        viewer.dataSources.removeAll();
-        var i = this.value;
-        const countyName = countiesNames[i];
-        const county = counties[i];
-        loadGeojson(county, viewer, 50);
-        // GET COUNTY GEOJSON 🌐
-        const countyLng = county.geometry.coordinates.flat()[0][0][0];
-        const countyLat = county.geometry.coordinates.flat()[0][0][1];
-        const countyLoc = Cesium.Cartesian3.fromDegrees(
-          countyLng,
-          countyLat,
-          200000
-        );
-        const footer = document.getElementById("footer");
-        setCoordinates(countyLng, countyLat, footer);
-        const showBldgs = this.value !== "" ? "block" : "none";
+        if (this.value !== "") {
+          graphsViewer.style.display = "none";
+          stateGraphs.style.display = "none";
+          countyGraphs.style.display = "block";
+          buildingGraphs.style.display = "none";
+          footer.style.display = "none";
+
+          viewer.dataSources.removeAll();
+          var i = this.value;
+          const countyName = countiesNames[[i]];
+          const county = counties[[i]];
+          loadGeojson(county, viewer, 50);
+        }
       });
   });
 
@@ -80,6 +116,7 @@ function initCesium() {
   var toggleMenu = false;
   menuButton.onclick = function () {
     menu.style.display = toggleMenu ? "block" : "none";
+    graphsViewer.style.display = toggleMenu ? "block" : "none";
     toggleMenu = !toggleMenu;
   };
 
@@ -104,11 +141,16 @@ function initCesium() {
       baseLayerPickerViewModel.imageryProviderViewModels[labels];
     toggleMapView = !toggleMapView;
   };
+
+  // DOM OBJECTS
+
   const goTo = document.getElementById("go-to");
   const stateGraphs = document.getElementById("state-graphs");
   const countyGraphs = document.getElementById("county-graphs");
   const buildingGraphs = document.getElementById("building-graphs");
+  const rangeSlider = document.getElementById("range-slider");
 
+  // BUILDING LEVEL 🏢
   var toggleGoTo = true;
   goTo.onclick = function () {
     if (toggleGoTo) {
@@ -117,6 +159,7 @@ function initCesium() {
       stateGraphs.style.display = "none";
       countyGraphs.style.display = "none";
       buildingGraphs.style.display = "block";
+      rangeSlider.style.display = "block";
 
       this.textContent = "🌎 Go to State";
       // Fly To Buildings
@@ -136,19 +179,22 @@ function initCesium() {
           document.getElementById("timestamp").innerHTML = date.slice(0, 16);
           // CO2 INSIDE 📩
           var co2_inside = Math.round(data[this.value].co2_inside);
-          var co2_inside_hex = perc2color((co2_inside + 286) / 17.56)
-          var co2_inside_html = document.getElementById("co2_inside")
+          var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);
+          var co2_inside_html = document.getElementById("co2_inside");
           co2_inside_html.innerHTML = co2_inside;
-          co2_inside_html.style.background = co2_inside_hex
+          co2_inside_html.style.background = co2_inside_hex;
           // CO2 OUTSIDE 🅾️
           var co2_outside = Math.round(data[this.value].co2_outside);
-          var co2_outside_hex = perc2color((co2_outside + 10) / 3.20)
-          var co2_outside_html = document.getElementById("co2_outside")
+          var co2_outside_hex = perc2color((co2_outside + 10) / 3.2);
+          var co2_outside_html = document.getElementById("co2_outside");
           co2_outside_html.innerHTML = co2_outside;
           // co2_outside_html.style.background = co2_outside_hex
           // TEMP 🌡️
-          var heat_pump_zone_temp = Math.round(data[this.value].heat_pump_zone_temp);
-          document.getElementById("heat_pump_zone_temp").innerHTML = heat_pump_zone_temp;
+          var heat_pump_zone_temp = Math.round(
+            data[this.value].heat_pump_zone_temp
+          );
+          document.getElementById("heat_pump_zone_temp").innerHTML =
+            heat_pump_zone_temp;
 
           console.log();
           buildingTileset.style = new Cesium.Cesium3DTileStyle({
@@ -163,11 +209,10 @@ function initCesium() {
       });
     } else {
       this.textContent = "🏢 Go to Building";
-      graphsViewer.style.display = "none";
       buildingGraphs.style.display = "none";
       stateGraphs.style.display = "block";
       // Fly to Counties
-      flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
+      flyTo(viewer, -73.4999, 43.00035, 1200000, -90.0, 0);
     }
     toggleGoTo = !toggleGoTo;
 
@@ -181,11 +226,11 @@ function initCesium() {
   var toggleGraphs = true;
   showGraphs.onclick = function () {
     if (toggleGraphs) {
-      this.textContent = "📉 Hide Graphs";
-      graphsViewer.style.display = "block";
-    } else {
       this.textContent = "📈 Show Graphs";
       graphsViewer.style.display = "none";
+    } else {
+      this.textContent = "📉 Hide Graphs";
+      graphsViewer.style.display = "block";
     }
     toggleGraphs = !toggleGraphs;
   };
@@ -196,8 +241,10 @@ function initCesium() {
   );
 
   // Fly the camera to the NY State.
-  flyTo(viewer, -75.4999, 43.00035, 1200000, -90.0, 0);
+  flyTo(viewer, -74.4999, 43.00035, 1200000, -90.0, 0);
 }
+
+// FUNCTIONS _____________________________________________________________________________________________________
 
 async function getJson(path) {
   var response = await fetch(path);
@@ -205,26 +252,33 @@ async function getJson(path) {
   return json;
 }
 
-async function loadGraph1(geojson, viewer, data, i) {
-  const max = Math.max(...data);
-  const min = Math.min(...data);
+async function loadGraph1(geojson, viewer, param, min, max) {
   const promise = Cesium.GeoJsonDataSource.load(geojson);
   promise.then(function (dataSource) {
     viewer.dataSources.add(dataSource);
     const entities = dataSource.entities.values;
     entities.forEach((entity) => {
-      var perc = ((data[i] - min) * 100) / (max - min);
+      var geoParam = geojson.properties[param]
+      isNaN(geoParam) ? geoParam = 0 : geoParam;
+      var perc = ((geoParam - min) * 100) / (max - min);
       var color = perc2color(perc);
-      entity.polygon.extrudedHeight = (data[i] + 2) * 1500;
-      entity.polygon.material = Cesium.Color.fromCssColorString(color);
-      entity.polygon.outlineColor = Cesium.Color.fromCssColorString(color);
+      if (geoParam === 0 ) {
+        entity.polygon.extrudedHeight = 1500;
+        entity.polygon.material = Cesium.Color.DARKGRAY
+        entity.polygon.outlineColor = Cesium.Color.DARKGRAY
+      }
+       else {
+        entity.polygon.extrudedHeight = (perc + 5) * 1000;
+        entity.polygon.material = Cesium.Color.fromCssColorString(color);
+        entity.polygon.outlineColor = Cesium.Color.fromCssColorString(color);
+       } 
     });
   });
 }
 
 async function loadGeojson(geojson, viewer, h) {
   const fillPromise = Cesium.GeoJsonDataSource.load(geojson, {
-    fill: Cesium.Color.fromBytes(251, 184, 41, 50),
+    fill: Cesium.Color.fromBytes(251, 184, 41, 100),
     stroke: Cesium.Color.fromBytes(251, 184, 41, 255),
     clampToGround: true,
   });
@@ -233,9 +287,7 @@ async function loadGeojson(geojson, viewer, h) {
     const entities = dataSource.entities.values;
     viewer.zoomTo(entities);
     entities.forEach((entity) => {
-      // entity.polygon.height = h;
       entity.polygon.outlineWidth = 4;
-      // entity.polygon.extrudedHeight = h;
     });
   });
 }
@@ -264,36 +316,4 @@ function perc2color(perc) {
   }
   var h = r * 0x10000 + g * 0x100 + b * 0x1;
   return "#" + ("000000" + h.toString(16)).slice(-6);
-}
-
-function getTree(collection, lng, lat, h, objId, specie) {
-  var hLabel = h === 9.99 ? "n/a" : h;
-  collection.entity.add({
-    name: "Tree id: " + objId,
-    description: "Specie: " + specie + ", Height: " + hLabel + " mts",
-    position: Cesium.Cartesian3.fromDegrees(lng, lat, 0.5),
-    cylinder: {
-      length: h - 0.5,
-      topRadius: 0.01,
-      bottomRadius: h / 4,
-      heightReference: Cesium.HeightReference.RELATIVE_TO_GROUND,
-      material: Cesium.Color.fromBytes(
-        Math.floor(Math.random() * 100),
-        Math.floor(220 - h * 3),
-        0
-      ),
-      slices: 5,
-    },
-  });
-}
-
-function setCoordinates(lng, lat, footer) {
-  const countyCoor =
-    "🌐	Coordinates: Longitude: " +
-    lng.toFixed(4) +
-    " , Latitud: " +
-    lat.toFixed(4);
-  // updating page title
-  document.getElementById("coordinates").innerHTML = countyCoor;
-  footer.style.display = "block";
 }
