@@ -88,24 +88,26 @@ function initCesium() {
             console.log(min, max);
           }
         });
-    });
+    
 
     //  COUNTY LEVEL 🏙️
     document
       .getElementById("counties-menu")
       .addEventListener("change", function () {
         if (this.value !== "") {
-          graphsViewer.style.display = "none";
           stateGraphs.style.display = "none";
           countyGraphs.style.display = "block";
           buildingGraphs.style.display = "none";
-          footer.style.display = "none";
+          // footer.style.display = "none";
 
           viewer.dataSources.removeAll();
           var i = this.value;
           const countyName = countiesNames[[i]];
           const county = counties[[i]];
           loadGeojson(county, viewer, 50);
+        }
+        else{
+          loadGraph1(county, viewer, "county_number", 0, 62);
         }
       });
   });
@@ -160,6 +162,7 @@ function initCesium() {
       countyGraphs.style.display = "none";
       buildingGraphs.style.display = "block";
       rangeSlider.style.display = "block";
+      viewer.dataSources.removeAll();
 
       this.textContent = "🌎 Go to State";
       // Fly To Buildings
@@ -176,19 +179,19 @@ function initCesium() {
           var timestamp = data[this.value].timestamp;
           var date = new Date(timestamp);
           date = date.toString();
-          document.getElementById("timestamp").innerHTML = date.slice(0, 16);
+          document.getElementById("timestamp").innerHTML = "📅 " + date.slice(0, 16);
           // CO2 INSIDE 📩
           var co2_inside = Math.round(data[this.value].co2_inside);
           var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);
           var co2_inside_html = document.getElementById("co2_inside");
           co2_inside_html.innerHTML = co2_inside;
+          co2_inside_html.style.color = "black";
           co2_inside_html.style.background = co2_inside_hex;
           // CO2 OUTSIDE 🅾️
           var co2_outside = Math.round(data[this.value].co2_outside);
           var co2_outside_hex = perc2color((co2_outside + 10) / 3.2);
           var co2_outside_html = document.getElementById("co2_outside");
           co2_outside_html.innerHTML = co2_outside;
-          // co2_outside_html.style.background = co2_outside_hex
           // TEMP 🌡️
           var heat_pump_zone_temp = Math.round(
             data[this.value].heat_pump_zone_temp
@@ -211,14 +214,13 @@ function initCesium() {
       this.textContent = "🏢 Go to Building";
       buildingGraphs.style.display = "none";
       stateGraphs.style.display = "block";
+      counties.forEach((county) => {
+      loadGraph1(county, viewer, "county_number", 0, 62);
+      })
       // Fly to Counties
-      flyTo(viewer, -73.4999, 43.00035, 1200000, -90.0, 0);
+      flyTo(viewer, -73.5, 43.00035, 1200000, -90.0, 0);
     }
     toggleGoTo = !toggleGoTo;
-
-    document.getElementById("footer").style.display = toggleGoTo
-      ? "none"
-      : "block";
   };
 
   var showGraphs = document.getElementById("show-graphs");
@@ -239,9 +241,9 @@ function initCesium() {
   const buildingTileset = viewer.scene.primitives.add(
     Cesium.createOsmBuildings()
   );
-
+});
   // Fly the camera to the NY State.
-  flyTo(viewer, -74.4999, 43.00035, 1200000, -90.0, 0);
+  flyTo(viewer, -73.5, 43.00035, 1200000, -90.0, 0);
 }
 
 // FUNCTIONS _____________________________________________________________________________________________________
