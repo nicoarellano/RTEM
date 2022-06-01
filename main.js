@@ -84,7 +84,7 @@ function initCesium() {
               viewer.dataSources.removeAll();
               loadGraph1(county, viewer, param, min, max); 
             })
-            document.getElementById("counties-legend").innerHTML = min + "                   " + max;
+            max !== 0? document.getElementById("counties-legend").innerHTML = min + "                   " + max: document.getElementById("counties-legend").innerHTML = "No numerical data";
             console.log(min, max);
           }
         });
@@ -263,7 +263,7 @@ async function loadGraph1(geojson, viewer, param, min, max) {
       var perc = ((geoParam - min) * 100) / (max - min);
       var color = perc2color(perc);
       if (geoParam === 0 ) {
-        entity.polygon.extrudedHeight = 1500;
+        entity.polygon.extrudedHeight = 1700;
         entity.polygon.material = Cesium.Color.DARKGRAY
         entity.polygon.outlineColor = Cesium.Color.DARKGRAY
       }
