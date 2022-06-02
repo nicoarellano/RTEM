@@ -102,7 +102,7 @@ function initCesium() {
                 document.getElementById("table-max").innerHTML = "MAX";
               }
             }
-
+          });
         //  COUNTY LEVEL 🏙️
         document
           .getElementById("counties-menu")
@@ -121,7 +121,7 @@ function initCesium() {
             }
           });
       });
-    });
+
 
     // Toggle Menu
     const menu = document.getElementById("menu");
