@@ -60,13 +60,13 @@ function initCesium() {
         option.innerHTML = countyName;
         option.value = i;
         countiesMenu.appendChild(option);
-        Object.assign(county.properties, countiesData[[i]])
+        Object.assign(county.properties, countiesData[[i]]);
         loadGraph1(county, viewer, "county_number", 0, 62);
         i++;
       });
 
       // STATE LEVEL 🌎
-      
+
       document
         .getElementById("county-data-menu")
         .addEventListener("change", function () {
@@ -76,172 +76,177 @@ function initCesium() {
             var max = 0;
             var min = 1000000000000;
             counties.forEach((county) => {
-              var value = county.properties[param]
-              value > max? max = value : max;
-              value != 0 && value < min? min = value : min;
+              var value = county.properties[param];
+              value > max ? (max = value) : max;
+              value != 0 && value < min ? (min = value) : min;
             });
             counties.forEach((county) => {
               viewer.dataSources.removeAll();
-              loadGraph1(county, viewer, param, min, max); 
-            })
-            max !== 0? document.getElementById("counties-legend").innerHTML = min + "                   " + max: document.getElementById("counties-legend").innerHTML = "No numerical data";
-            console.log(min, max);
+              loadGraph1(county, viewer, param, min, max);
+            });
+            if (max !== 0 && min !== max) {
+              document.getElementById("table-min").innerHTML = min; 
+              document.getElementById("table-max").innerHTML = max; 
+            }else {
+              document.getElementById("table-min").innerHTML = "MIN"; 
+              document.getElementById("table-max").innerHTML = "MAX";
+            }
           }
         });
-    
 
-    //  COUNTY LEVEL 🏙️
-    document
-      .getElementById("counties-menu")
-      .addEventListener("change", function () {
-        if (this.value !== "") {
-          stateGraphs.style.display = "none";
-          countyGraphs.style.display = "block";
-          buildingGraphs.style.display = "none";
-          // footer.style.display = "none";
+      //  COUNTY LEVEL 🏙️
+      document
+        .getElementById("counties-menu")
+        .addEventListener("change", function () {
+          if (this.value !== "") {
+            stateGraphs.style.display = "none";
+            countyGraphs.style.display = "block";
+            buildingGraphs.style.display = "none";
+            // footer.style.display = "none";
 
-          viewer.dataSources.removeAll();
-          var i = this.value;
-          const countyName = countiesNames[[i]];
-          const county = counties[[i]];
-          loadGeojson(county, viewer, 50);
-        }
-        else{
-          loadGraph1(county, viewer, "county_number", 0, 62);
-        }
-      });
-  });
+            viewer.dataSources.removeAll();
+            var i = this.value;
+            const countyName = countiesNames[[i]];
+            const county = counties[[i]];
+            loadGeojson(county, viewer, 50);
+          } else {
+            loadGraph1(county, viewer, "county_number", 0, 62);
+          }
+        });
+    });
 
-  // Toggle Menu
-  const menu = document.getElementById("menu");
-  const menuButton = document.getElementById("menu-button");
-  var toggleMenu = false;
-  menuButton.onclick = function () {
-    menu.style.display = toggleMenu ? "block" : "none";
-    graphsViewer.style.display = toggleMenu ? "block" : "none";
-    toggleMenu = !toggleMenu;
-  };
+    // Toggle Menu
+    const menu = document.getElementById("menu");
+    const menuButton = document.getElementById("menu-button");
+    var toggleMenu = false;
+    menuButton.onclick = function () {
+      menu.style.display = toggleMenu ? "block" : "none";
+      graphsViewer.style.display = toggleMenu ? "block" : "none";
+      toggleMenu = !toggleMenu;
+    };
 
-  // Show Map Labels
-  var baseLayerPickerViewModel = viewer.baseLayerPicker.viewModel;
-  baseLayerPickerViewModel.selectedImagery =
-    baseLayerPickerViewModel.imageryProviderViewModels[1];
-  // Toggle Map view
-  const mapView = document.getElementById("map-view");
-  var labels = 1;
-  var toggleMapView = true;
-  mapView.onclick = function () {
-    if (toggleMapView) {
-      labels = 2;
-      this.textContent = "🛰️ Satelital View";
-      console.log(this);
-    } else {
-      labels = 1;
-      this.textContent = "🗺️ Map view";
-    }
+    // Show Map Labels
+    var baseLayerPickerViewModel = viewer.baseLayerPicker.viewModel;
     baseLayerPickerViewModel.selectedImagery =
-      baseLayerPickerViewModel.imageryProviderViewModels[labels];
-    toggleMapView = !toggleMapView;
-  };
+      baseLayerPickerViewModel.imageryProviderViewModels[1];
+    // Toggle Map view
+    const mapView = document.getElementById("map-view");
+    var labels = 1;
+    var toggleMapView = true;
+    mapView.onclick = function () {
+      if (toggleMapView) {
+        labels = 2;
+        this.textContent = "🛰️ Satelital View";
+        console.log(this);
+      } else {
+        labels = 1;
+        this.textContent = "🗺️ Map view";
+      }
+      baseLayerPickerViewModel.selectedImagery =
+        baseLayerPickerViewModel.imageryProviderViewModels[labels];
+      toggleMapView = !toggleMapView;
+    };
 
-  // DOM OBJECTS
+    // DOM OBJECTS
 
-  const goTo = document.getElementById("go-to");
-  const stateGraphs = document.getElementById("state-graphs");
-  const countyGraphs = document.getElementById("county-graphs");
-  const buildingGraphs = document.getElementById("building-graphs");
-  const rangeSlider = document.getElementById("range-slider");
+    const goTo = document.getElementById("go-to");
+    const stateGraphs = document.getElementById("state-graphs");
+    const countyGraphs = document.getElementById("county-graphs");
+    const buildingGraphs = document.getElementById("building-graphs");
+    const rangeSlider = document.getElementById("range-slider");
 
-  // BUILDING LEVEL 🏢
-  var toggleGoTo = true;
-  goTo.onclick = function () {
-    if (toggleGoTo) {
-      // Graphs 📈
-      graphsViewer.style.display = "block";
-      stateGraphs.style.display = "none";
-      countyGraphs.style.display = "none";
-      buildingGraphs.style.display = "block";
-      rangeSlider.style.display = "block";
-      viewer.dataSources.removeAll();
+    // BUILDING LEVEL 🏢
+    var toggleGoTo = true;
+    goTo.onclick = function () {
+      if (toggleGoTo) {
+        // Graphs 📈
+        graphsViewer.style.display = "block";
+        stateGraphs.style.display = "none";
+        countyGraphs.style.display = "none";
+        buildingGraphs.style.display = "block";
+        rangeSlider.style.display = "block";
+        viewer.dataSources.removeAll();
 
-      this.textContent = "🌎 Go to State";
-      // Fly To Buildings
-      flyTo(viewer, -73.99452, 40.75641, 350, -45.0, 0);
-      // Load OSM 🏢
-      var bldgs = "${elementId} === 3573251 ||" + "${elementId} === 265517913";
-      var range = document.getElementById("myRange");
-      getJson(
-        "https://raw.githubusercontent.com/nicoarellano/RTEM/main/assets/data/daily_co2_temp_hospitality_426_new_york.json"
-      ).then((data) => {
-        range.addEventListener("input", function () {
-          // COLOURS 🎨
-          var hexColor = perc2color(this.value / 10.97);
-          var timestamp = data[this.value].timestamp;
-          var date = new Date(timestamp);
-          date = date.toString();
-          document.getElementById("timestamp").innerHTML = "📅 " + date.slice(0, 16);
-          // CO2 INSIDE 📩
-          var co2_inside = Math.round(data[this.value].co2_inside);
-          var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);
-          var co2_inside_html = document.getElementById("co2_inside");
-          co2_inside_html.innerHTML = co2_inside;
-          co2_inside_html.style.color = "black";
-          co2_inside_html.style.background = co2_inside_hex;
-          // CO2 OUTSIDE 🅾️
-          var co2_outside = Math.round(data[this.value].co2_outside);
-          var co2_outside_hex = perc2color((co2_outside + 10) / 3.2);
-          var co2_outside_html = document.getElementById("co2_outside");
-          co2_outside_html.innerHTML = co2_outside;
-          // TEMP 🌡️
-          var heat_pump_zone_temp = Math.round(
-            data[this.value].heat_pump_zone_temp
-          );
-          document.getElementById("heat_pump_zone_temp").innerHTML =
-            heat_pump_zone_temp;
+        this.textContent = "🌎 Go to State";
+        // Fly To Buildings
+        flyTo(viewer, -73.99452, 40.75641, 350, -45.0, 0);
+        // Load OSM 🏢
+        var bldgs =
+          "${elementId} === 3573251 ||" + "${elementId} === 265517913";
+        var range = document.getElementById("myRange");
+        getJson(
+          "https://raw.githubusercontent.com/nicoarellano/RTEM/main/assets/data/daily_co2_temp_hospitality_426_new_york.json"
+        ).then((data) => {
+          range.addEventListener("input", function () {
+            // COLOURS 🎨
+            var hexColor = perc2color(this.value / 10.97);
+            var timestamp = data[this.value].timestamp;
+            var date = new Date(timestamp);
+            date = date.toString();
+            document.getElementById("timestamp").innerHTML =
+              "📅 " + date.slice(0, 16);
+            // CO2 INSIDE 📩
+            var co2_inside = Math.round(data[this.value].co2_inside);
+            var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);
+            var co2_inside_html = document.getElementById("co2_inside");
+            co2_inside_html.innerHTML = co2_inside;
+            co2_inside_html.style.color = "black";
+            co2_inside_html.style.background = co2_inside_hex;
+            // CO2 OUTSIDE 🅾️
+            var co2_outside = Math.round(data[this.value].co2_outside);
+            var co2_outside_hex = perc2color((co2_outside + 10) / 3.2);
+            var co2_outside_html = document.getElementById("co2_outside");
+            co2_outside_html.innerHTML = co2_outside;
+            // TEMP 🌡️
+            var heat_pump_zone_temp = Math.round(
+              data[this.value].heat_pump_zone_temp
+            );
+            document.getElementById("heat_pump_zone_temp").innerHTML =
+              heat_pump_zone_temp;
 
-          console.log();
-          buildingTileset.style = new Cesium.Cesium3DTileStyle({
-            color: {
-              conditions: [[bldgs, "color('" + co2_inside_hex + "')"]],
-            },
-            show: {
-              conditions: [["${elementId} === 949254697", false]],
-            },
+            console.log();
+            buildingTileset.style = new Cesium.Cesium3DTileStyle({
+              color: {
+                conditions: [[bldgs, "color('" + co2_inside_hex + "')"]],
+              },
+              show: {
+                conditions: [["${elementId} === 949254697", false]],
+              },
+            });
           });
         });
-      });
-    } else {
-      this.textContent = "🏢 Go to Building";
-      buildingGraphs.style.display = "none";
-      stateGraphs.style.display = "block";
-      counties.forEach((county) => {
-      loadGraph1(county, viewer, "county_number", 0, 62);
-      })
-      // Fly to Counties
-      flyTo(viewer, -73.5, 43.00035, 1200000, -90.0, 0);
-    }
-    toggleGoTo = !toggleGoTo;
-  };
+      } else {
+        this.textContent = "🏢 Go to Building";
+        buildingGraphs.style.display = "none";
+        stateGraphs.style.display = "block";
+        counties.forEach((county) => {
+          loadGraph1(county, viewer, "county_number", 0, 62);
+        });
+        // Fly to Counties
+        flyTo(viewer, -73.5, 43.00035, 1200000, -90.0, 0);
+      }
+      toggleGoTo = !toggleGoTo;
+    };
 
-  var showGraphs = document.getElementById("show-graphs");
-  const graphsViewer = document.getElementById("graphs-viewer");
-  var toggleGraphs = true;
-  showGraphs.onclick = function () {
-    if (toggleGraphs) {
-      this.textContent = "📈 Show Graphs";
-      graphsViewer.style.display = "none";
-    } else {
-      this.textContent = "📉 Hide Graphs";
-      graphsViewer.style.display = "block";
-    }
-    toggleGraphs = !toggleGraphs;
-  };
+    var showGraphs = document.getElementById("show-graphs");
+    const graphsViewer = document.getElementById("graphs-viewer");
+    var toggleGraphs = true;
+    showGraphs.onclick = function () {
+      if (toggleGraphs) {
+        this.textContent = "📈 Show Graphs";
+        graphsViewer.style.display = "none";
+      } else {
+        this.textContent = "📉 Hide Graphs";
+        graphsViewer.style.display = "block";
+      }
+      toggleGraphs = !toggleGraphs;
+    };
 
-  // Add Cesium OSM Buildings, a global 3D buildings layer.
-  const buildingTileset = viewer.scene.primitives.add(
-    Cesium.createOsmBuildings()
-  );
-});
+    // Add Cesium OSM Buildings, a global 3D buildings layer.
+    const buildingTileset = viewer.scene.primitives.add(
+      Cesium.createOsmBuildings()
+    );
+  });
   // Fly the camera to the NY State.
   flyTo(viewer, -73.5, 43.00035, 1200000, -90.0, 0);
 }
@@ -260,20 +265,19 @@ async function loadGraph1(geojson, viewer, param, min, max) {
     viewer.dataSources.add(dataSource);
     const entities = dataSource.entities.values;
     entities.forEach((entity) => {
-      var geoParam = geojson.properties[param]
-      isNaN(geoParam) ? geoParam = 0 : geoParam;
+      var geoParam = geojson.properties[param];
+      isNaN(geoParam) ? (geoParam = 0) : geoParam;
       var perc = ((geoParam - min) * 100) / (max - min);
       var color = perc2color(perc);
-      if (geoParam === 0 ) {
+      if (geoParam === 0) {
         entity.polygon.extrudedHeight = 1700;
-        entity.polygon.material = Cesium.Color.DARKGRAY
-        entity.polygon.outlineColor = Cesium.Color.DARKGRAY
-      }
-       else {
+        entity.polygon.material = Cesium.Color.DARKGRAY;
+        entity.polygon.outlineColor = Cesium.Color.DARKGRAY;
+      } else {
         entity.polygon.extrudedHeight = (perc + 5) * 1000;
         entity.polygon.material = Cesium.Color.fromCssColorString(color);
         entity.polygon.outlineColor = Cesium.Color.fromCssColorString(color);
-       } 
+      }
     });
   });
 }

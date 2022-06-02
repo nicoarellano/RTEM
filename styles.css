@@ -81,6 +81,8 @@ font-size: 2rem;
   text-align: center;
   background-color: black;
   color: rgba(251, 184, 41);
+  padding: 7px;
+  border-radius: 15px;
 }
 .footer {
   display: none;

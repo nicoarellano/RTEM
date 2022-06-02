@@ -43,12 +43,14 @@
     <div class="graphs-viewer" id="graphs-viewer" style="display: block">
       <div id="state-graphs">
         <h2>New York State - Counties</h2>
-        <pre class="legend" id="counties-legend">MIN                   MAX</pre>
-        <select id="county-data-menu" class="dropdown" value="">
+        <select id="county-data-menu" class="dropdown" value="" style="display:block">
           <option class="option" value="">-- select a dataset--</option>
         </select>
         <h4>Graphs:</h4>
-        <canvas id="myChart" width="800" height="400"></canvas>
+        <canvas id="myChart" width="800" height="400"></canvas><br>
+        <h4>Legend:</h4>
+        <table class="legend" id="counties-legend" ><th id="table-min" style="text-align: left" >MIN</th><th id="table-max" style="text-align: right">MAX</th></table>
+        <div class="button" id="counties-no-data" style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data</div>
       </div>
       <div id="county-graphs" style="display: none">
         <h3>New York County</h3><br>
@@ -71,7 +73,7 @@
           <table style="width:100%"><th>2018</th><th>|</th><th>2019</th><th>|</th><th>2020</th></table><br>
         </h4>
         </div>
-        <h4>CO2 Inside (PPM):</h4><pre class="legend">286                      1469</pre>
+        <h4>CO2 Inside (PPM):</h4><table class="legend" id="counties-legend"><th id="table-min" style="text-align: left" >286</th><th id="table-max" style="text-align: right">1469</th></table>
         <p id="co2_inside" class="data">0000</p>
         <h4>CO2 Outside (PPM):</h4>
         <p id="co2_outside" class="data">000</p>
