@@ -1,7 +1,6 @@
 // CESIUM
 const cesiumContainer = document.getElementById("cesiumContainer");
 initCesium();
-// chartIt();
 
 function initCesium() {
   Cesium.Ion.defaultAccessToken =
@@ -66,61 +65,62 @@ function initCesium() {
         loadGraph1(county, viewer, "county_number", 0, 62);
         i++;
       });
-      chartIt(countiesNames, countyNums, "County Number");
 
-      // STATE LEVEL 🌎
-      document
-        .getElementById("county-data-menu")
-        .addEventListener("change", function () {
-          var param = this.value;
-          if (param !== "") {
-            var max = 0;
-            var min = 1000000000000;
-            var values = [];
-            var countiesWithData = [];
-            counties.forEach((county) => {
-              var value = county.properties[param];
-              if (value > 0) {
-                values.push(value);
-                countiesWithData.push(county.properties.name);
+      chartIt(countiesNames, countyNums, "County Number")
+        // STATE LEVEL 🌎
+        document
+          .getElementById("county-data-menu")
+          .addEventListener("change", function () {
+            var param = this.value;
+            if (param !== "") {
+              var max = 0;
+              var min = 1000000000000;
+              var values = [];
+              var countiesWithData = [];
+              counties.forEach((county) => {
+                var value = county.properties[param];
+                if (value > 0) {
+                  values.push(value);
+                  countiesWithData.push(county.properties.name);
+                }
+                value > max ? (max = value) : max;
+                value != 0 && value < min ? (min = value) : min;
+              });
+
+
+
+              chartIt(countiesWithData, values, param);
+              counties.forEach((county) => {
+                viewer.dataSources.removeAll();
+                loadGraph1(county, viewer, param, min, max);
+              });
+              if (max !== 0 && min !== max) {
+                document.getElementById("table-min").innerHTML = min;
+                document.getElementById("table-max").innerHTML = max;
+              } else {
+                document.getElementById("table-min").innerHTML = "MIN";
+                document.getElementById("table-max").innerHTML = "MAX";
               }
-              value > max ? (max = value) : max;
-              value != 0 && value < min ? (min = value) : min;
-            });
-            chartIt(countiesWithData, values, "County Number");
-            counties.forEach((county) => {
-              viewer.dataSources.removeAll();
-              loadGraph1(county, viewer, param, min, max);
-            });
-            if (max !== 0 && min !== max) {
-              document.getElementById("table-min").innerHTML = min;
-              document.getElementById("table-max").innerHTML = max;
-            } else {
-              document.getElementById("table-min").innerHTML = "MIN";
-              document.getElementById("table-max").innerHTML = "MAX";
             }
-          }
-        });
 
-      //  COUNTY LEVEL 🏙️
-      document
-        .getElementById("counties-menu")
-        .addEventListener("change", function () {
-          if (this.value !== "") {
-            stateGraphs.style.display = "none";
-            countyGraphs.style.display = "block";
-            buildingGraphs.style.display = "none";
-            // footer.style.display = "none";
-
-            viewer.dataSources.removeAll();
-            var i = this.value;
-            const countyName = countiesNames[[i]];
-            const county = counties[[i]];
-            loadGeojson(county, viewer, 50);
-          } else {
-            loadGraph1(county, viewer, "county_number", 0, 62);
-          }
-        });
+        //  COUNTY LEVEL 🏙️
+        document
+          .getElementById("counties-menu")
+          .addEventListener("change", function () {
+            if (this.value !== "") {
+              stateGraphs.style.display = "none";
+              countyGraphs.style.display = "block";
+              buildingGraphs.style.display = "none";
+              viewer.dataSources.removeAll();
+              var i = this.value;
+              const countyName = countiesNames[[i]];
+              const county = counties[[i]];
+              loadGeojson(county, viewer, 50);
+            } else {
+              loadGraph1(county, viewer, "county_number", 0, 62);
+            }
+          });
+      });
     });
 
     // Toggle Menu
@@ -336,23 +336,23 @@ function perc2color(perc) {
 }
 
 async function chartIt(x, y, label) {
-  const ctx = document.getElementById("myChart")
-  console.log(ctx.children.length)
-  var canvas = document.createElement("CANVAS")
-  ctx.appendChild(canvas)  
-  console.log(ctx.children.length)
-  ctx.children[0].remove()
-  console.log(ctx.children.length)
+  const ctx = document.getElementById("myChart").getContext("2d");
+
   const max = Math.max(...y);
   const min = Math.min(...y);
   var color = [];
   y.forEach((i) => {
     var p = ((i - min) * 100) / (max - min);
-    var c = perc2color(p)
+    var c = perc2color(p);
     color.push(c);
   });
 
-  const myChart = new Chart(ctx, {
+  let chartStatus = Chart.getChart("myChart");
+  if (chartStatus != undefined) {
+    chartStatus.destroy();
+  }
+
+  const myChart = await new Chart(ctx, {
     type: "bar",
     data: {
       labels: x,
@@ -377,6 +377,13 @@ async function chartIt(x, y, label) {
             },
           },
         },
+      },
+      plugins:{
+        legend:{
+          labels:{
+            boxWidth:0
+          }
+        }
       },
     },
   });
