@@ -346,8 +346,7 @@ async function chartIt(x, y, label) {
     var c = perc2color(p);
     color.push(c);
   });
-
-  color.length 
+  color.length === 1 ? color = "darkgray" : color;
 
   let chartStatus = Chart.getChart("myChart");
   if (chartStatus != undefined) {
