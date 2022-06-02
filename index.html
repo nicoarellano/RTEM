@@ -43,50 +43,75 @@
     <div class="graphs-viewer" id="graphs-viewer" style="display: block">
       <div id="state-graphs">
         <h2>New York State - Counties</h2>
-        <select id="county-data-menu" class="dropdown" value="" style="display:block">
-          <option class="option" value="">-- select a dataset--</option>
-        </select>
-        <h4>Graphs:</h4>
-        <canvas id="myChart" width="800" height="400"></canvas><br>
+
+        
         <h4>Legend:</h4>
-        <table>
-          <th><table class="legend" id="counties-legend" style="width: 200px;"><th id="table-min" style="text-align: left" >MIN</th><th id="table-max" style="text-align: right">MAX</th></table></th>
-        <th><table><th></th><th class="button" id="counties-no-data" style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data</div></th></table></th>
+        <table style="width: 100%;">
+          <th>
+            <select id="county-data-menu" class="dropdown" value="" style="display:inline">
+              <option class="option" value="">-- select a dataset--</option>
+            </select>
+          </th>
+          <th></th>
+          <th>
+            <table class="legend" id="counties-legend" style="width: 200px;">
+              <th id="table-min" style="text-align: left">MIN</th>
+              <th id="table-max" style="text-align: right">MAX</th>
+            </table>
+          </th>
+          <th>
+            <table>
+              <th></th>
+              <th class="button" id="counties-no-data"
+                style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data
+      </div>
+      </th>
       </table>
+      </th>
+      </table>
+      <h4>Graphs:</h4>
+        <canvas id="myChart" width="800" height="400"></canvas><br>
     </div>
-      <div id="county-graphs" style="display: none">
-        <h3>New York County</h3><br>
-        <h4>Equipment Count:</h4>
-        <img src="https://raw.githubusercontent.com/nicoarellano/RTEM/main/graphs/graph-30.png"
-          alt="g4">
-          <h4>Top 20 Point Counts:</h4>
-          <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/graph-30_1.png?raw=true"
-            alt="g4">
-        <h4>Multifamily zone temperature by building (2020):</h4>
-        <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true"
-          alt="g4">
-      </div>
-      <div id="building-graphs" style="display: none">
-        <h2>New York County - Building #426</h2><br>
-        <h4>Date:</h4>
-        <p id="timestamp">📅 use slider to select the date</p>
-        <div id="range-slider">
-          <input type="range" min="0" max="1096" value="548" class="slider" id="myRange"></input>
-          <table style="width:100%"><th>2018</th><th>|</th><th>2019</th><th>|</th><th>2020</th></table><br>
+    <div id="county-graphs" style="display: none">
+      <h3>New York County</h3><br>
+      <h4>Equipment Count:</h4>
+      <img src="https://raw.githubusercontent.com/nicoarellano/RTEM/main/graphs/graph-30.png" alt="g4">
+      <h4>Top 20 Point Counts:</h4>
+      <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/graph-30_1.png?raw=true" alt="g4">
+      <h4>Multifamily zone temperature by building (2020):</h4>
+      <img src="https://github.com/nicoarellano/RTEM/blob/main/graphs/new_york_2020_multifamily.png?raw=true" alt="g4">
+    </div>
+    <div id="building-graphs" style="display: none">
+      <h2>New York County - Building #426</h2><br>
+      <h4>Date:</h4>
+      <p id="timestamp">📅 use slider to select the date</p>
+      <div id="range-slider">
+        <input type="range" min="0" max="1096" value="548" class="slider" id="myRange"></input>
+        <table style="width:100%">
+          <th>2018</th>
+          <th>|</th>
+          <th>2019</th>
+          <th>|</th>
+          <th>2020</th>
+        </table><br>
         </h4>
-        </div>
-        <h4>CO2 Inside (PPM):</h4><table class="legend" id="counties-legend" style="width: 200px;"><th id="table-min" style="text-align: left" >286</th><th id="table-max" style="text-align: right">1469</th></table>
-        <p id="co2_inside" class="data">0000</p>
-        <h4>CO2 Outside (PPM):</h4>
-        <p id="co2_outside" class="data">000</p>
-        <h4>Heat Pump Zone Temperature (°F):</h4>
-        <p id="heat_pump_zone_temp" class="data">00</p>
-        <h4>Hourly Inside vs Outside CO2:</h4>
-        <img
-          src="https://github.com/nicoarellano/RTEM/blob/main/graphs/Hourly%20Inside%20vs%20Outside%20co2%20-%20Theatre.png?raw=true"
-          alt="g4">
       </div>
+      <h4>CO2 Inside (PPM):</h4>
+      <table class="legend" id="counties-legend" style="width: 200px;">
+        <th id="table-min" style="text-align: left">286</th>
+        <th id="table-max" style="text-align: right">1469</th>
+      </table>
+      <p id="co2_inside" class="data">0000</p>
+      <h4>CO2 Outside (PPM):</h4>
+      <p id="co2_outside" class="data">000</p>
+      <h4>Heat Pump Zone Temperature (°F):</h4>
+      <p id="heat_pump_zone_temp" class="data">00</p>
+      <h4>Hourly Inside vs Outside CO2:</h4>
+      <img
+        src="https://github.com/nicoarellano/RTEM/blob/main/graphs/Hourly%20Inside%20vs%20Outside%20co2%20-%20Theatre.png?raw=true"
+        alt="g4">
     </div>
+  </div>
   </div>
 </body>
 
