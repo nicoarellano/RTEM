@@ -195,7 +195,7 @@ function initCesium() {
             var year = date.getFullYear().toString();
             date = date.toString();
             document.getElementById("timestamp").innerHTML =
-              "📅 " + year + " / " + month + " / " + day;
+              "📅 " + date;
             // CO2 INSIDE 📩
             var co2_inside = Math.round(data[this.value].co2_inside);
             var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);
