@@ -49,9 +49,11 @@
         <h4>Graphs:</h4>
         <canvas id="myChart" width="800" height="400"></canvas><br>
         <h4>Legend:</h4>
-        <table class="legend" id="counties-legend" ><th id="table-min" style="text-align: left" >MIN</th><th id="table-max" style="text-align: right">MAX</th></table>
-        <div class="button" id="counties-no-data" style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data</div>
-      </div>
+        <table>
+          <th><table class="legend" id="counties-legend" style="width: 200px;"><th id="table-min" style="text-align: left" >MIN</th><th id="table-max" style="text-align: right">MAX</th></table></th>
+        <th><table><th></th><th class="button" id="counties-no-data" style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data</div></th></table></th>
+      </table>
+    </div>
       <div id="county-graphs" style="display: none">
         <h3>New York County</h3><br>
         <h4>Equipment Count:</h4>
@@ -86,64 +88,6 @@
       </div>
     </div>
   </div>
-<!-- CHART JS -->
-  <div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        chartIt();
-    async function chartIt() {
-    const data = await getData();
-    const ctx = document.getElementById('myChart').getContext('2d');
-    const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: data.xs,
-            datasets: [{
-                label: 'Equipment count by county',
-                data: data.ys,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    ticks: {
-                        // Include degrees sign
-                        callback: function(value, index, ticks) {
-                            return value;
-                            // + '°'
-                        }
-                    }
-                }
-            }
-        }
-       });
-}
-    getData();
-async function getData() {
-    const xs = [];
-    const ys = [];
-    const response = await fetch('https://raw.githubusercontent.com/nicoarellano/RTEM/main/assets/data/county_Datasets.csv');
-    const data = await response.text();
-    const table = data.split('\n').slice(1);
-    table.forEach(row => {
-        const columns = row.split(',');
-        const year = columns[31];
-        xs.push(year);
-        const temp = columns[2];
-        ys.push(parseFloat(temp));
-    });
-    return { xs, ys };
-}
-    </script>
-
-  </div>
-
-  <!-- <footer class="footer" id="footer" style="display: none;">
-  </footer> -->
-
 </body>
 
 </html>

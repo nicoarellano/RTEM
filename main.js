@@ -1,6 +1,7 @@
 // CESIUM
 const cesiumContainer = document.getElementById("cesiumContainer");
 initCesium();
+// chartIt();
 
 function initCesium() {
   Cesium.Ion.defaultAccessToken =
@@ -52,43 +53,50 @@ function initCesium() {
         option.innerHTML = keyName;
         countiesDataMenu.appendChild(option);
       });
-
+      const countyNums = [];
       counties.forEach((county) => {
         const countyName = county.properties.name;
-        countiesNames.push(countyName);
+        countiesNames.push(countyName.replace(" County", ""));
         var option = document.createElement("option");
         option.innerHTML = countyName;
         option.value = i;
         countiesMenu.appendChild(option);
         Object.assign(county.properties, countiesData[[i]]);
+        countyNums.push(i);
         loadGraph1(county, viewer, "county_number", 0, 62);
         i++;
       });
+      chartIt(countiesNames, countyNums, "County Number");
 
       // STATE LEVEL 🌎
-
       document
         .getElementById("county-data-menu")
         .addEventListener("change", function () {
           var param = this.value;
           if (param !== "") {
-            console.log(counties);
             var max = 0;
             var min = 1000000000000;
+            var values = [];
+            var countiesWithData = [];
             counties.forEach((county) => {
               var value = county.properties[param];
+              if (value > 0) {
+                values.push(value);
+                countiesWithData.push(county.properties.name);
+              }
               value > max ? (max = value) : max;
               value != 0 && value < min ? (min = value) : min;
             });
+            chartIt(countiesWithData, values, "County Number");
             counties.forEach((county) => {
               viewer.dataSources.removeAll();
               loadGraph1(county, viewer, param, min, max);
             });
             if (max !== 0 && min !== max) {
-              document.getElementById("table-min").innerHTML = min; 
-              document.getElementById("table-max").innerHTML = max; 
-            }else {
-              document.getElementById("table-min").innerHTML = "MIN"; 
+              document.getElementById("table-min").innerHTML = min;
+              document.getElementById("table-max").innerHTML = max;
+            } else {
+              document.getElementById("table-min").innerHTML = "MIN";
               document.getElementById("table-max").innerHTML = "MAX";
             }
           }
@@ -260,6 +268,7 @@ async function getJson(path) {
 }
 
 async function loadGraph1(geojson, viewer, param, min, max) {
+  var colors = [];
   const promise = Cesium.GeoJsonDataSource.load(geojson);
   promise.then(function (dataSource) {
     viewer.dataSources.add(dataSource);
@@ -269,6 +278,7 @@ async function loadGraph1(geojson, viewer, param, min, max) {
       isNaN(geoParam) ? (geoParam = 0) : geoParam;
       var perc = ((geoParam - min) * 100) / (max - min);
       var color = perc2color(perc);
+      colors.push(color);
       if (geoParam === 0) {
         entity.polygon.extrudedHeight = 1700;
         entity.polygon.material = Cesium.Color.DARKGRAY;
@@ -280,6 +290,7 @@ async function loadGraph1(geojson, viewer, param, min, max) {
       }
     });
   });
+  return colors;
 }
 
 async function loadGeojson(geojson, viewer, h) {
@@ -322,4 +333,52 @@ function perc2color(perc) {
   }
   var h = r * 0x10000 + g * 0x100 + b * 0x1;
   return "#" + ("000000" + h.toString(16)).slice(-6);
+}
+
+async function chartIt(x, y, label) {
+  const ctx = document.getElementById("myChart")
+  console.log(ctx.children.length)
+  var canvas = document.createElement("CANVAS")
+  ctx.appendChild(canvas)  
+  console.log(ctx.children.length)
+  ctx.children[0].remove()
+  console.log(ctx.children.length)
+  const max = Math.max(...y);
+  const min = Math.min(...y);
+  var color = [];
+  y.forEach((i) => {
+    var p = ((i - min) * 100) / (max - min);
+    var c = perc2color(p)
+    color.push(c);
+  });
+
+  const myChart = new Chart(ctx, {
+    type: "bar",
+    data: {
+      labels: x,
+      datasets: [
+        {
+          label: label,
+          data: y,
+          backgroundColor: color,
+          borderColor: color,
+          borderWidth: 1,
+        },
+      ],
+    },
+    options: {
+      scales: {
+        y: {
+          ticks: {
+            // Include degrees sign
+            callback: function (value) {
+              return value;
+              // + '°'
+            },
+          },
+        },
+      },
+    },
+  });
+  return myChart;
 }
