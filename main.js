@@ -190,9 +190,12 @@ function initCesium() {
             var hexColor = perc2color(this.value / 10.97);
             var timestamp = data[this.value].timestamp;
             var date = new Date(timestamp);
+            var day = date.getDay().toString();
+            var month = date.getMonth().toString();
+            var year = date.getFullYear().toString();
             date = date.toString();
             document.getElementById("timestamp").innerHTML =
-              "📅 " + date.slice(0, 16);
+              "📅 " + year + " / " + month + " / " + day;
             // CO2 INSIDE 📩
             var co2_inside = Math.round(data[this.value].co2_inside);
             var co2_inside_hex = perc2color((co2_inside + 286) / 17.56);

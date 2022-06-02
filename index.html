@@ -56,13 +56,6 @@
               <th id="table-max" style="text-align: right">MAX</th>
             </table>
           </th>
-          <th>
-            <table>
-              <th></th>
-              <th class="button" id="counties-no-data"
-                style="background-color: darkgray; color: black; font-weight: bold; ">No numerical data
-      </div>
-      </th>
       </table>
       </th>
       </table>
@@ -80,6 +73,16 @@
     </div>
     <div id="building-graphs" style="display: none">
       <h2>New York County - Building #426</h2><br>
+      <h4>CO2 Inside (PPM):</h4>
+      <table class="legend" id="counties-legend" style="width: 200px;">
+        <th id="table-min" style="text-align: left">286</th>
+        <th id="table-max" style="text-align: right">1469</th>
+      </table>
+      <p id="co2_inside" class="data">0000</p>
+      <h4>CO2 Outside (PPM):</h4>
+      <p id="co2_outside" class="data">000</p>
+      <h4>Heat Pump Zone Temperature (°F):</h4>
+      <p id="heat_pump_zone_temp" class="data">00</p>
       <h4>Date:</h4>
       <p id="timestamp">📅 use slider to select the date</p>
       <div id="range-slider">
@@ -93,16 +96,6 @@
         </table><br>
         </h4>
       </div>
-      <h4>CO2 Inside (PPM):</h4>
-      <table class="legend" id="counties-legend" style="width: 200px;">
-        <th id="table-min" style="text-align: left">286</th>
-        <th id="table-max" style="text-align: right">1469</th>
-      </table>
-      <p id="co2_inside" class="data">0000</p>
-      <h4>CO2 Outside (PPM):</h4>
-      <p id="co2_outside" class="data">000</p>
-      <h4>Heat Pump Zone Temperature (°F):</h4>
-      <p id="heat_pump_zone_temp" class="data">00</p>
       <h4>Hourly Inside vs Outside CO2:</h4>
       <img
         src="https://github.com/nicoarellano/RTEM/blob/main/graphs/Hourly%20Inside%20vs%20Outside%20co2%20-%20Theatre.png?raw=true"
