@@ -347,6 +347,8 @@ async function chartIt(x, y, label) {
     color.push(c);
   });
 
+  color.length 
+
   let chartStatus = Chart.getChart("myChart");
   if (chartStatus != undefined) {
     chartStatus.destroy();
