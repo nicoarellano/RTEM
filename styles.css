@@ -31,7 +31,7 @@ body pre{
   overflow:auto;
   top: 50px;
   width: 40vw;
-  max-height: 60vh;
+  max-height: 63vh;
   list-style-type: none;
   position: absolute;
   background-color: rgba(251, 184, 41, 0.7);
@@ -69,13 +69,13 @@ font-size: 2rem;
   margin: 5px;
   padding: 10px;
   border-radius: 15px;
-  max-width: 200px;
+  max-width: 90%;
   font-size: large;
   font-weight: bold;
 }
 
 .data{
-  max-width: 200px;
+  max-width: 40%;
   text-align: center;
   background-color: black;
   color: rgba(251, 184, 41);
@@ -95,7 +95,7 @@ font-size: 2rem;
 .menu {
   list-style-type: none;
   position: absolute;
-  max-width: 45vw;
+  max-width: 49vw;
   top: 50px;
   left: -5px;
   line-height: 150%;
@@ -160,7 +160,7 @@ font-size: 2rem;
   background-color: black;
   color: rgba(251, 184, 41, 0.6);
   line-height: 150%;
-  width: 200px;
+  width: 90%;
   padding: 10px;
   font-size: 16px;
   border: none;
@@ -173,7 +173,7 @@ font-size: 2rem;
 
 .button {
   background-color: black;
-  width: 200px;
+  width: 90%px;
   height: 40px;
   color: rgba(251, 184, 41, 0.6);;
   padding: 10px;
