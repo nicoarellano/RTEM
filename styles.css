@@ -30,13 +30,11 @@ body pre{
   padding: 20px;
   overflow:auto;
   top: 50px;
-  width: 40%;
+  width: 40vw;
   max-height: 60vh;
   list-style-type: none;
   position: absolute;
-  top: 8%;
   background-color: rgba(251, 184, 41, 0.7);
-  border-top-left-radius: 15px;
   border-bottom-left-radius: 15px;
   margin: 5px auto;
   box-shadow: 0 0 10px 1px #000;
@@ -97,7 +95,7 @@ font-size: 2rem;
 .menu {
   list-style-type: none;
   position: absolute;
-  max-width: 40vw;
+  max-width: 45vw;
   top: 50px;
   left: -5px;
   line-height: 150%;
